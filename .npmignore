@@ -1,0 +1,6 @@
+/*.json
+/*.js
+.eslint*
+.gitignore
+lib
+README.md
