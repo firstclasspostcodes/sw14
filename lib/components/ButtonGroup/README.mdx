@@ -1,0 +1,34 @@
+---
+name: ButtonGroup
+menu: Components
+route: /components/button-group
+---
+
+import { ButtonGroup } from './';
+import { Button } from '../Button'; 
+import { Icon } from '../Icon'; 
+import { Playground } from 'docz';
+
+# ButtonGroup
+
+The `<ButtonGroup/>` component is used for `<button/>` elements. It uses the [Typography](/components/typography) component to style the look of the text inside the element. 
+
+> If a `href="..."` prop is supplied, the button renders as an `<a/>` tag.
+
+## Import
+
+```js
+import { ButtonGroup } from '@firstclasspostcodes/sw13';
+// or
+import { ButtonGroup } from '@firstclasspostcodes/sw13/lib/components/ButtonGroup';
+```
+
+## Example
+
+<Playground>
+  <ButtonGroup initial="hello" size={1/5}>
+    <Button key="test" size="0"><Icon icon="download" /> Click me</Button>
+    <Button key="hello" size="0">Click me</Button>
+    <Button key="world" size="0">Click me</Button>
+  </ButtonGroup>
+</Playground>

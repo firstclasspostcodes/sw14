@@ -1,0 +1,50 @@
+{
+  "tracking": {
+    "a": -0.0223,
+    "b": 0.185,
+    "c": -0.1745
+  },
+  "lineHeightModifier": 1.41,
+  "weights": {
+    "thin": 100,
+    "extraLight": 200,
+    "light": 300,
+    "regular": 400,
+    "medium": 500,
+    "semiBold": 600,
+    "bold": 700,
+    "black": 800
+  },
+  "defaultFeatures": [
+    "calt", 
+    "liga", 
+    "kern"
+  ],
+  "features": [
+    "dlig",
+    "numr",
+    "dnom",
+    "tnum",
+    "case",
+    "zero",
+    "frac",
+    "sups",
+    "subs",
+    "cpsp",
+    "salt",
+    "ss01",
+    "ss02",
+    "ss03",
+    "cv01",
+    "cv02",
+    "cv03",
+    "cv04",
+    "cv05",
+    "cv06",
+    "cv07",
+    "cv08",
+    "cv09",
+    "cv10",
+    "cv11"
+  ]
+}

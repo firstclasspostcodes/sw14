@@ -1,0 +1,45 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Switch } from './';
+
+<Meta title="Components/Switch" component={Switch} />
+
+# Switch
+
+The `<Switch/>` component.
+
+## Import
+
+```js
+import { Switch } from '@firstclasspostcodes/sw14';
+// or
+import { Switch } from '@firstclasspostcodes/sw14/lib/components/Switch';
+```
+
+<Preview>
+  <Story name="Default">
+    <Switch label="Send email" description="Triggers an email when it happens."/>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Colored">
+    <Switch color={["green", 4]} checked={true} label="Check me" />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Invalid">
+    <Switch invalid label="Send email"/>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Disabled">
+    <Switch disabled label="Send email" description="Triggers an email when it happens."/>
+  </Story>
+</Preview>
+
+
+
+
+

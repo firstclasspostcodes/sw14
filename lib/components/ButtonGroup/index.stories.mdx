@@ -1,0 +1,29 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Button } from '../';
+import { ButtonGroup } from '.';
+
+<Meta title="Components/ButtonGroup" component={ButtonGroup} />
+
+# ButtonGroup
+
+The `<ButtonGroup>` component.
+
+## Import
+
+```js
+import { ButtonGroup } from '@firstclasspostcodes/sw14';
+// or
+import { ButtonGroup } from '@firstclasspostcodes/sw14/lib/components/ButtonGroup';
+```
+
+## Button Group
+
+<Preview>
+  <Story name="ButtonGroup">
+    <ButtonGroup initial="hello" size={1/5}>
+      <Button key="test">Click me</Button>
+      <Button key="hello">Click me</Button>
+      <Button key="world">Click me</Button>
+    </ButtonGroup>
+  </Story>
+</Preview>

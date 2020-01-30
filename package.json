@@ -4,9 +4,16 @@
   "description": "CSS-in-JS based theme library for the SW14 components library",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build-icons && npm run build-commonjs && npm run build-esm && npm run size",
+    "build-icons": "node lib/components/Icon/__compile.js",
+    "build-commonjs": "BABEL_ENV=commonjs babel lib --out-dir commonjs --copy-files --ignore '**/test' --source-maps inline",
+    "build-esm": "BABEL_ENV=esm babel lib --out-dir esm --copy-files --ignore '**/test' --source-maps inline",
+    "build-storybook": "build-storybook",
     "commit": "npx git-cz",
     "lint": "eslint .",
     "pretest": "npm run lint",
+    "size": "size-limit",
+    "storybook": "start-storybook -p 6006",
     "test": "cross-env NODE_ENV=test jest --passWithNoTests --coverage"
   },
   "repository": {
@@ -32,6 +39,12 @@
     "@babel/register": "^7.8.3",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-angular": "^8.3.4",
+    "@size-limit/preset-big-lib": "^3.0.0",
+    "@storybook/addon-actions": "^5.3.9",
+    "@storybook/addon-docs": "^5.3.9",
+    "@storybook/addon-links": "^5.3.9",
+    "@storybook/addons": "^5.3.9",
+    "@storybook/react": "^5.3.9",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^25.1.0",
@@ -48,15 +61,18 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
     "git-cz": "^4.2.0",
+    "glob": "^7.1.6",
     "husky": "^4.2.1",
     "jest": "^25.1.0",
     "jest-circus": "^25.1.0",
+    "pascalcase": "^1.0.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "size-limit": "^3.0.0"
   },
   "dependencies": {
+    "deepmerge": "^4.2.2",
     "polished": "^3.4.3",
     "prop-types": "^15.7.2",
     "react-intersection-observer": "^8.25.2",
@@ -65,5 +81,15 @@
     "styled-components-grid": "^2.2.2",
     "styled-components-spacing": "^3.1.1",
     "tinycolor2": "^1.4.1"
-  }
+  },
+  "size-limit": [
+    {
+      "path": "commonjs/index.js",
+      "limit": "300 KB"
+    },
+    {
+      "path": "esm/index.js",
+      "limit": "300 KB"
+    }
+  ]
 }

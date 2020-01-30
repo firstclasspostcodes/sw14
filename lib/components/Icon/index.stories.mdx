@@ -1,0 +1,30 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Airplane, SquareEmpty } from '.';
+
+<Meta title="Components/Icon" />
+
+# Icon
+
+There are over 1000 icons included inside the library. We use a licensed version of th Glyphicons library, [available here](https://www.glyphicons.com/sets/basic/).
+
+> For purposes of reducing the overall size of the library, we do not export the icons explicitly. Therefore, when requiring an icon,
+you must import it directly.
+
+## Import
+
+```js
+import { Airplane } from '@firstclasspostcodes/sw14/lib/components/Icon';
+// or
+import Airplane from '@firstclasspostcodes/sw14/lib/components/Icon/Airplane';
+```
+
+## Example
+
+<Preview>
+  <Story name="Fill">
+    <Airplane color="brand" size="4"/>
+  </Story>
+  <Story name="Outlined">
+    <SquareEmpty color="brand" size="4"/>
+  </Story>
+</Preview>

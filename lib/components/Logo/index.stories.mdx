@@ -1,0 +1,23 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Logo } from './';
+import { Grid } from '../Grid';
+
+<Meta title="Components/Logo" component={Logo} />
+
+# Logo
+
+Magic! The `<Logo/>` component does pretty much what it says. It displays the Firstclaspostcodes logo in all it's glory 🎉.
+
+## Import
+
+```js
+import { Logo } from '@firstclasspostcodes/sw14';
+// or
+import { Logo } from '@firstclasspostcodes/sw14/lib/components/Logo';
+```
+
+<Preview>
+  <Story name="Pane">
+    <Logo color="brand" />
+  </Story>
+</Preview>

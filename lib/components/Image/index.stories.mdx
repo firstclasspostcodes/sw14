@@ -1,0 +1,25 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Image } from './';
+import { Grid } from '../Grid';
+
+<Meta title="Components/Image" component={Image} />
+
+# Image
+
+This `<Image/>` component provides an [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer). This enables better page score, by only loading the asset when the image (nearly) scrolls into the viewport. This enables the page to load faster 
+
+The `<Image/>` component does pretty much what it says, it accepts all standard `<img/>` props.
+
+## Import
+
+```js
+import { Image } from '@firstclasspostcodes/sw14';
+// or
+import { Image } from '@firstclasspostcodes/sw14/lib/components/Image';
+```
+
+<Preview>
+  <Story name="Image">
+    <Image src="https://via.placeholder.com/350x150" />
+  </Story>
+</Preview>
