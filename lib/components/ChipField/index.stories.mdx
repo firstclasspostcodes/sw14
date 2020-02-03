@@ -1,0 +1,44 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { ChipField } from './';
+import { FormField } from '../FormField';
+import { Pane } from '../Pane';
+
+<Meta title="Components/ChipField" component={ChipField} />
+
+# ChipField
+
+The `<ChipField/>` component.
+
+## Import
+
+```js
+import { ChipField } from '@firstclasspostcodes/sw14';
+// or
+import { ChipField } from '@firstclasspostcodes/sw14/lib/components/ChipField';
+```
+
+<Preview>
+  <Story name="ChipField">
+    <ChipField onChange={arr => console.log(arr)} chips={[{ label: 'hello', background: 'brand' }, { label: 'david' }]} />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="ChipField in FormField">
+    <FormField 
+      input={(props) => <ChipField {...props} />}
+      inputProps={{
+        chips: [{ label: 'sad' }, { label: 'david' }],
+        onChange: arr => console.log(arr),
+        inputProps: {
+          autoFocus: true,
+        },
+      }}
+      id="words"
+      label="Happy words"
+      invalid="Sad word detected!"
+      hint="Try happy words like joy"
+      description="Leave some happy words below."
+    />
+  </Story>
+</Preview>

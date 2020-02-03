@@ -1,0 +1,25 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Badge } from './';
+
+<Meta title="Components/Badge" component={Badge} />
+
+# Badge
+
+The `<Badge/>` component.
+
+## Import
+
+```js
+import { Badge } from '@firstclasspostcodes/sw14';
+// or
+import { Badge } from '@firstclasspostcodes/sw14/lib/components/Badge';
+```
+
+<Preview>
+  <Story name="Badge">
+    <>
+      <p>This is the <Badge background="black" color="white">standard</Badge> badge.</p>
+      <p>This is the <Badge background="brand" color="white">branded</Badge> badge.</p>
+    </>
+  </Story>
+</Preview>

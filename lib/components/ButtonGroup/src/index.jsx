@@ -38,7 +38,7 @@ export const ButtonGroup = ({ children, initial, onChange, size, ...props }) => 
 
 ButtonGroup.propTypes = {
   initial: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  children: PropTypes.arrayOf(PropTypes.instanceOf(Button)).isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
   onChange: PropTypes.func,
   size: PropTypes.number,
 };

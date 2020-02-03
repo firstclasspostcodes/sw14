@@ -1,0 +1,31 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Hero } from './';
+
+<Meta title="Prefabs/Hero" component={Hero} />
+
+# Hero
+
+The `<Hero/>` component.
+
+## Import
+
+```js
+import { Hero } from '@firstclasspostcodes/sw14';
+// or
+import { Hero } from '@firstclasspostcodes/sw14/lib/prefabs/Hero';
+```
+
+<Preview>
+  <Story name="Hero">
+    <Hero
+      title="World-Class Static Hosting"
+      caption="All-in-one solution for static & JAMstack deployment for performance-obsessed teams."
+      tease="No credit card required."
+      buttonProps={{
+        children: "Deploy free",
+      }}
+    >
+      <p>testing</p>
+    </Hero>
+  </Story>
+</Preview>

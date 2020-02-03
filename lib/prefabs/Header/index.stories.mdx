@@ -1,0 +1,86 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Header } from './';
+import { Navigation } from '../../components/Navigation';
+
+<Meta title="Prefabs/Header" component={Header} />
+
+# Header
+
+The `<Header/>` component.
+
+## Import
+
+```js
+import { Header } from '@firstclasspostcodes/sw14';
+// or
+import { Header } from '@firstclasspostcodes/sw14/lib/prefabs/Header';
+```
+
+<Preview>
+  <Story name="Header">
+    <Header
+      navigation={(
+        <Navigation data={{
+          items: [
+            {
+              "title": "Products",
+              "items": [
+                {
+                  "title": "APIs",
+                  "items": [
+                    {
+                      "title": "Postcode Lookup",
+                      "link": "/lookup",
+                    },
+                    {
+                      "title": "Address Autocomplete",
+                      "link": "/address-autocomplete",
+                    },
+                    {
+                      "title": "Geolookup",
+                      "link": "/geolookup",
+                    }
+                  ]
+                },
+                {
+                  "title": "APIs",
+                  "items": [
+                    {
+                      "title": "Postcode Lookup",
+                      "link": "/lookup",
+                    },
+                    {
+                      "title": "Address Autocomplete",
+                      "link": "/address-autocomplete",
+                    }
+                  ]
+                },
+              ]
+            },
+            {
+              "title": "Services",
+              "items": [
+                {
+                  "title": "Something short",
+                  "link": "/service-a",
+                },
+                {
+                  "title": "Very short",
+                  "link": "/service-b",
+                },
+                {
+                  "title": "Something a bit longer",
+                  "link": "/service-c",
+                }
+              ]
+            },
+            {
+              "title": "Pricing",
+              "link": "/pricing"
+            },
+          ]
+        }} />
+      )}
+    />
+  </Story>
+</Preview>

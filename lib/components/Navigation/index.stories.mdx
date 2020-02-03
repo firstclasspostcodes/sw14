@@ -1,0 +1,93 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Typography } from '../Typography';
+import { Navigation } from './';
+
+<Meta title="Components/Navigation" component={Navigation} />
+
+# Navigation
+
+The `<Navigation/>` component.
+
+## Import
+
+```js
+import { Navigation } from '@firstclasspostcodes/sw14';
+// or
+import { Navigation } from '@firstclasspostcodes/sw14/lib/components/Navigation';
+```
+
+<Preview>
+  <Story name="Test">
+    <>
+      <input type="checkbox" id="hello-world"/>
+      <label htmlFor="hello-world">toggle me</label>
+    </>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Default">
+    <div style={{ height: 600 }}>
+      <Navigation data={{
+        items: [
+          {
+            "title": "Products",
+            "items": [
+              {
+                "title": "APIs",
+                "items": [
+                  {
+                    "title": "Postcode Lookup",
+                    "link": "/lookup",
+                  },
+                  {
+                    "title": "Address Autocomplete",
+                    "link": "/address-autocomplete",
+                  },
+                  {
+                    "title": "Geolookup",
+                    "link": "/geolookup",
+                  }
+                ]
+              },
+              {
+                "title": "APIs",
+                "items": [
+                  {
+                    "title": "Postcode Lookup",
+                    "link": "/lookup",
+                  },
+                  {
+                    "title": "Address Autocomplete",
+                    "link": "/address-autocomplete",
+                  }
+                ]
+              },
+            ]
+          },
+          {
+            "title": "Services",
+            "items": [
+              {
+                "title": "Something short",
+                "link": "/service-a",
+              },
+              {
+                "title": "Very short",
+                "link": "/service-b",
+              },
+              {
+                "title": "Something a bit longer",
+                "link": "/service-c",
+              }
+            ]
+          },
+          {
+            "title": "Pricing",
+            "link": "/pricing"
+          },
+        ]
+      }} />
+    </div>
+  </Story>
+</Preview>

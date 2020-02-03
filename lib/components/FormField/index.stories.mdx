@@ -1,0 +1,48 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { FormField } from './';
+import { TextField } from '../TextField';
+import { Grid } from '../Grid';
+
+<Meta title="Components/FormField" component={FormField} />
+
+# FormField
+
+A `<FormField/>` wraps a single input component with a label, description, hint and provides validation control.
+
+## Import
+
+```js
+import { FormField } from '@firstclasspostcodes/sw14';
+// or
+import { FormField } from '@firstclasspostcodes/sw14/lib/components/FormField';
+```
+
+<Preview>
+  <Story name="FormFields">
+    <Pane spacing={{ py: { sm: 4 } }} background="gray">
+      <FormField 
+        input={(props) => <TextField {...props} />}
+        inputProps={{
+          fullWidth: true,
+          placeholder: "Enter your email address"
+        }}
+        id="username"
+        label="Username"
+        description="Your username is your registered email address."
+        invalid="Your email address is invalid."
+        hint="Your email address has an @ character."
+      />
+      <FormField 
+        input={(props) => <TextField {...props} />}
+        inputProps={{
+          fullWidth: true,
+          type: 'password',
+          placeholder: "Enter your password"
+        }}
+        id="password"
+        label="Password"
+        description="Your password contains at least 8 characters."
+      />
+    </Pane>
+  </Story>
+</Preview>

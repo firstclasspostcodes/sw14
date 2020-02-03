@@ -1,0 +1,45 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { TextField } from './';
+
+<Meta title="Components/TextField" component={TextField} />
+
+# TextField
+
+The `<TextField/>` component.
+
+## Import
+
+```js
+import { TextField } from '@firstclasspostcodes/sw14';
+// or
+import { TextField } from '@firstclasspostcodes/sw14/lib/components/TextField';
+```
+<Preview>
+  <Story name="Standard">
+    <TextField placeholder="This is placeholder text" fullWidth/>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Disabled">
+    <TextField placeholder="This is placeholder text" disabled fullWidth/>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Password">
+    <TextField type="password" fullWidth/>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Invalid">
+    <TextField pattern="[A-Za-z]{3}" defaultValue="This text is invalid" fullWidth/>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Multiline">
+    <TextField multiline invalid fullWidth/>
+  </Story>
+</Preview>

@@ -17,25 +17,29 @@ import { Switch } from '@firstclasspostcodes/sw14/lib/components/Switch';
 
 <Preview>
   <Story name="Default">
-    <Switch label="Send email" description="Triggers an email when it happens."/>
+    <Switch id="default" name="default" label="Send email" description="Triggers an email when it happens."/>
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="Colored">
-    <Switch color={["green", 4]} checked={true} label="Check me" />
+  <Story name="Radio Group">
+    <>
+      <Switch type="radio" id="eggs" color="brand" name="colored" label="I like eggs" />
+      <Switch type="radio" id="pizza" invalid checked name="colored" label="I like pizza" />
+      <Switch type="radio" id="apples" name="colored" label="I like apples" description="Especially red juicy apples" />
+    </>
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Invalid">
-    <Switch invalid label="Send email"/>
+    <Switch id="invalid" name="invalid" invalid label="Send email"/>
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Disabled">
-    <Switch disabled label="Send email" description="Triggers an email when it happens."/>
+    <Switch id="disabled" name="disabled" disabled label="Send email" description="Triggers an email when it happens."/>
   </Story>
 </Preview>
 

@@ -15,26 +15,11 @@ import { Button } from '@firstclasspostcodes/sw14';
 import { Button } from '@firstclasspostcodes/sw14/lib/components/Button';
 ```
 
-## Presets
+## Standard
 
 <Preview>
-  <Story name="Presets/Standard">
-    <Button>Standard</Button>
-  </Story>
-  <Story name="Presets/Primary">
-    <Button.Primary>Primary</Button.Primary>
-  </Story>
-  <Story name="Presets/Secondary">
-    <Button.Secondary>Secondary</Button.Secondary>
-  </Story>
-  <Story name="Presets/Success">
-    <Button.Success>Success</Button.Success>
-  </Story>
-  <Story name="Presets/Warning">
-    <Button.Warning>Warning</Button.Warning>
-  </Story>
-  <Story name="Presets/Error">
-    <Button.Error>Error</Button.Error>
+  <Story name="Standard">
+    <Button >Some button</Button>
   </Story>
 </Preview>
 
@@ -43,6 +28,14 @@ import { Button } from '@firstclasspostcodes/sw14/lib/components/Button';
 <Preview>
   <Story name="Larger & Colored">
     <Button color="brand" size="20">Some button</Button>
+  </Story>
+</Preview>
+
+## Disabled
+
+<Preview>
+  <Story name="Disabled">
+    <Button disabled>Some button</Button>
   </Story>
 </Preview>
 
@@ -58,6 +51,6 @@ import { Button } from '@firstclasspostcodes/sw14/lib/components/Button';
 
 <Preview>
   <Story name="Text">
-    <Button border={false} color="brand">Button without a border</Button>
+    <Button border="transparent" color="brand">Button without a border</Button>
   </Story>
 </Preview>

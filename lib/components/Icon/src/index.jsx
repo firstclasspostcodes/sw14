@@ -7,7 +7,6 @@ export const Icon = styled.span.attrs(() => ({}))`
   position: relative;
   
   & > svg {
-    ${({ theme, color }) => color && `stroke: ${theme.palette.color(color)};`}
     ${({ theme, color }) => color && `fill: ${theme.palette.color(color)};`}
     ${({ theme, size }) => size && `width: ${theme.spacing(size)};`}
     ${({ theme, size }) => size && `height: ${theme.spacing(size)};`}
@@ -16,10 +15,10 @@ export const Icon = styled.span.attrs(() => ({}))`
 
 Icon.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  color: PropTypes.oneOf([
+  color: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.arrayOf([PropTypes.string, PropTypes.number]),
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   ]),
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -10,22 +10,36 @@ const Pointer = styled(Grid)`
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
 
-const Shrink = styled(Grid.Unit)`
-  flex-shrink: 1;
-  flex-basis: auto;
+const Label = styled.label`
+  display: flex;
+
+  & + & {
+    margin-top: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
-const sliderProps = ({ name, checked }) => ({
-  children: <input type="checkbox" id={name} name={name} checked={checked} />,
-});
+const Input = styled.input`
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  opacity: 0;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  overflow: hidden;
+  padding: 0px;
+`;
 
-const Slider = styled.div.attrs(sliderProps)`
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+const Slider = styled.div`
+  cursor: pointer;
   position: relative;
   display: inline-flex;
   width: ${({ theme }) => theme.spacing(8)};
   height: ${({ theme }) => theme.spacing(4)};
-  background-color: ${({ theme, color }) => theme.palette.color(color)};
+  background-color: ${({ theme }) => theme.palette.color(['gray', 2])};
 
   &:before {
     position: absolute;
@@ -38,98 +52,101 @@ const Slider = styled.div.attrs(sliderProps)`
     transition: 0.4s;
   }
 
-  &:before {
-    ${({ theme, checked }) => (checked ? `transform: translateX(${theme.spacing(4)});` : null)}
+  ${Input}:checked + & {
+    background-color: ${({ theme, color }) => {
+      if (typeof color === 'string') {
+        return theme.palette.color([color, 7]);
+      }
+      return theme.palette.color(color);
+    }};
   }
 
-  input[type='checkbox'] {
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-    opacity: 0;
-    border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
-    overflow: hidden;
-    padding: 0px;
+  ${Input}:checked + &:before {
+    transform: translateX(${({ theme }) => theme.spacing(4)});
+  }
+
+  ${Input}:disabled + & {
+    cursor: not-allowed;
+    background-color: ${({ theme }) => theme.palette.color(['gray', 2])};
+  }
+
+  ${Input}[aria-invalid='true'] + & {
+    background-color: ${({ theme }) => theme.palette.color(['red', 2])};
+  }
+
+  ${Input}[aria-invalid='true']:checked + & {
+    background-color: ${({ theme }) => theme.palette.color(['red', 7])};
   }
 `;
 
-export const Switch = ({ onChange, label, description, checked: initial, ...props }) => {
-  const [selected, setSelected] = useState(initial);
-
-  const { color, disabled, invalid } = props;
-
+export const Switch = ({
+  type,
+  id,
+  name,
+  color,
+  disabled,
+  invalid,
+  onChange,
+  label,
+  description,
+  checked: initial,
+}) => {
   const typographyProps = {};
 
-  const overrides = props;
-
-  const handleSelected = state => [setSelected(state), onChange(state)];
-
-  let onClick = () => handleSelected(!selected);
-
-  typographyProps.color = color;
-
-  if (!selected) {
-    let name = color || 'gray';
-    if (color && typeof color !== 'string') {
-      [name] = color;
-    }
-    if (name === 'black') {
-      name = 'gray';
-    }
-    overrides.color = [name, 2];
-  }
-
   if (disabled) {
-    onClick = () => null;
     typographyProps.color = ['gray', 2];
-    overrides.color = ['gray', 2];
-  }
-
-  if (invalid) {
+  } else if (invalid) {
     typographyProps.color = ['red', 7];
-    overrides.color = ['red', 7];
-
-    if (!selected) {
-      overrides.color = ['red', 2];
-    }
   }
 
-  const slider = <Shrink {...overrides} as={Slider} onClick={onClick} checked={selected} />;
+  const slider = (
+    <Grid.Shrink>
+      <Input
+        type={type}
+        defaultChecked={initial}
+        onChange={onChange}
+        id={id}
+        name={name}
+        aria-invalid={invalid}
+        disabled={disabled}
+      />
+      <Slider color={color} />
+    </Grid.Shrink>
+  );
 
   if (!label) {
-    return slider;
+    return <Label htmlFor={name}>{slider}</Label>;
   }
 
   return (
-    <Pointer disabled={disabled} onClick={onClick} wrap={false}>
-      {slider}
-      <Grid.Unit as={Pane} spacing={{ ml: { xs: 2 } }} size={9 / 10}>
-        <Typography.H4 {...typographyProps}>{label}</Typography.H4>
-        {description ? (
-          <Typography.Caption {...typographyProps} size={0} weight="light" hue="5">
-            {description}
-          </Typography.Caption>
-        ) : null}
-      </Grid.Unit>
-    </Pointer>
+    <Label htmlFor={id}>
+      <Pointer disabled={disabled} wrap={false}>
+        {slider}
+        <Grid.Unit as={Pane} spacing={{ ml: { xs: 2 } }} size={9 / 10}>
+          <Typography.H4 {...typographyProps}>{label}</Typography.H4>
+          {description ? (
+            <Typography.Caption {...typographyProps} size={0} weight="light" hue="5">
+              {description}
+            </Typography.Caption>
+          ) : null}
+        </Grid.Unit>
+      </Pointer>
+    </Label>
   );
 };
 
 Switch.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   invalid: PropTypes.bool,
   checked: PropTypes.bool,
-  color: PropTypes.oneOf([
+  color: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.arrayOf([PropTypes.string, PropTypes.number]),
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   ]),
+  type: PropTypes.oneOf(['checkbox', 'radio']),
   label: PropTypes.string,
   description: PropTypes.string,
   onChange: PropTypes.func,
@@ -142,5 +159,6 @@ Switch.defaultProps = {
   label: '',
   description: '',
   checked: false,
+  type: 'checkbox',
   onChange: () => null,
 };
