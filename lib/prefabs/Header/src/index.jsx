@@ -6,6 +6,7 @@ import { Grid } from '../../../components/Grid';
 import { SkipLink } from '../../../components/SkipLink';
 import { Pane } from '../../../components/Pane';
 import { Button } from '../../../components/Button';
+import { ButtonGroup } from '../../../components/ButtonGroup';
 import { Typography } from '../../../components/Typography';
 import { Logo } from '../../../components/Logo';
 
@@ -26,20 +27,20 @@ export const Header = ({ logoLinkTitle, logoLinkHref, skipLinkHref, navigation, 
   return (
     <>
       <SkipLink href={skipLinkHref} />
-      <Border spacing={{ p: 1 }}>
+      <Border spacing={{ p: { xs: 0, md: 1 } }}>
         <Grid valign="stretch">
-          <Grid.Shrink as={Pane} spacing={{ p: 1 }}>
+          <Grid.Shrink visible={{ xs: false, md: true }} as={Pane} spacing={{ p: 1 }}>
             <a href={logoLinkHref} title={logoLinkTitle}>
               <Logo size={5} />
             </a>
           </Grid.Shrink>
-          <Grid.Grow as={Pane} spacing={{ pl: 1.5 }}>
+          <Grid.Grow as={Pane} spacing={{ pl: { xs: 0, md: 1.5 } }}>
             <Grid valign="center">
-              <Grid.Unit as={Grid} halign="left" size={2 / 3}>
+              <Grid.Unit as={Grid} halign="left" size={{ xs: 1, md: 2 / 3 }}>
                 {navigation}
               </Grid.Unit>
-              <Grid.Unit as={Grid} halign="right" size={1 / 3}>
-                {controls}
+              <Grid.Unit as={Grid} halign="right" size={{ xs: 1, md: 1 / 3 }}>
+                <ButtonGroup halign="right">{controls}</ButtonGroup>
               </Grid.Unit>
             </Grid>
           </Grid.Grow>
@@ -56,7 +57,7 @@ Header.propTypes = {
   logoLinkHref: PropTypes.string.isRequired,
   skipLinkHref: PropTypes.string.isRequired,
   navigation: PropTypes.node.isRequired,
-  controls: PropTypes.node.isRequired,
+  controls: ButtonGroup.propTypes.children.isRequired,
 };
 
 Header.defaultProps = {

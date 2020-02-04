@@ -1,6 +1,7 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 import { Header } from './';
 import { Navigation } from '../../components/Navigation';
+import { Button } from '../../components/Button';
 
 <Meta title="Prefabs/Header" component={Header} />
 
@@ -19,6 +20,10 @@ import { Header } from '@firstclasspostcodes/sw14/lib/prefabs/Header';
 <Preview>
   <Story name="Header">
     <Header
+      controls={[
+        <Button target="_blank" href="https://docs.firstclasspostcodes.com" border="transparent">Docs</Button>,
+        <Button target="_blank" href="https://dashboard.firstclasspostcodes.com" background="black" color="white">Dashboard</Button>,
+      ]}
       navigation={(
         <Navigation data={{
           items: [

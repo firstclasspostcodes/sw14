@@ -164,6 +164,10 @@ const navigationAttrs = ({ data }) => {
 };
 
 export const Navigation = styled.div.attrs(navigationAttrs)`
+  ${breakpoint('xs', 'md')`
+    width: 100%;
+  `}
+
   nav {
     position: relative;
 
