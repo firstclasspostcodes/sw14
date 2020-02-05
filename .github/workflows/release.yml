@@ -27,4 +27,4 @@ jobs:
       - if: github.ref == 'refs/heads/master'
         run: npm run deploy-storybook -- --ci
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: firstclasspostcodes:${{ secrets.GITHUB_TOKEN }}
