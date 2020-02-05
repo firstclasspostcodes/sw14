@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { paramCase } from 'param-case';
 import breakpoint from 'styled-components-breakpoint';
@@ -46,9 +47,9 @@ const List = styled.ul.attrs(listAttrs)`
 
   & {
     --border-color: ${({ theme }) => theme.palette.color(['gray', 1])};
-    border-top-style: dotted;
 
     ${breakpoint('xs', 'md')`
+      border-top-style: dotted;
       flex-direction: column;
     `}
   }
@@ -239,3 +240,7 @@ export const Navigation = styled.div.attrs(navigationAttrs)`
 Navigation.List = List;
 
 Navigation.ListItem = ListItem;
+
+Navigation.propTypes = {
+  data: PropTypes.object.isRequired,
+};

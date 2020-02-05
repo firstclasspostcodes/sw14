@@ -13,7 +13,7 @@ addParameters({
 addDecorator(storyFn => (
   <ThemeProvider theme={Theme}>
     <>
-      <Baseline/>
+      <Baseline rootId="#root"/>
       {storyFn()}
     </>
   </ThemeProvider>

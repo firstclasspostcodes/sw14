@@ -1,0 +1,140 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Layout } from './';
+import { Button } from '../../components/Button';
+
+<Meta title="Prefabs/Layout" component={Layout} />
+
+# Layout
+
+The `<Layout/>` component.
+
+## Import
+
+```js
+import { Layout } from '@firstclasspostcodes/sw14';
+// or
+import { Layout } from '@firstclasspostcodes/sw14/lib/prefabs/Layout';
+```
+
+<Preview>
+  <Story name="Layout">
+    <Layout
+      headerProps={{
+        skipLinkHref: '#',
+        logoLinkHref: '#',
+        controls: [
+          <Button key="1" target="_blank" href="https://docs.firstclasspostcodes.com" background="transparent" border="transparent">Docs</Button>,
+          <Button key="2" target="_blank" href="https://dashboard.firstclasspostcodes.com" background={{ xs: 'brand', sm: 'black' }} color="white">Dashboard</Button>,
+        ],
+        navigationData: {
+          items: [
+            {
+              "title": "Products",
+              "items": [
+                {
+                  "title": "APIs",
+                  "items": [
+                    {
+                      "title": "Postcode Lookup",
+                      "link": "/lookup",
+                    },
+                    {
+                      "title": "Address Autocomplete",
+                      "link": "/address-autocomplete",
+                    },
+                    {
+                      "title": "Geolookup",
+                      "link": "/geolookup",
+                    }
+                  ]
+                },
+                {
+                  "title": "APIs",
+                  "items": [
+                    {
+                      "title": "Postcode Lookup",
+                      "link": "/lookup",
+                    },
+                    {
+                      "title": "Address Autocomplete",
+                      "link": "/address-autocomplete",
+                    }
+                  ]
+                },
+              ]
+            },
+            {
+              "title": "Services",
+              "items": [
+                {
+                  "title": "Something short",
+                  "link": "/service-a",
+                },
+                {
+                  "title": "Very short",
+                  "link": "/service-b",
+                },
+                {
+                  "title": "Something a bit longer",
+                  "link": "/service-c",
+                }
+              ]
+            },
+            {
+              "title": "Pricing",
+              "link": "/pricing"
+            },
+          ]
+        },
+      }}
+      footerProps={{
+        columns: [
+          {
+            heading: 'Product',
+            links: [
+              {
+                href: '#',
+                text: 'Test Link A',
+              },
+              {
+                href: '#',
+                text: 'Test Link B',
+              },
+              {
+                href: '#',
+                text: 'Test Link C',
+              },
+              {
+                href: '#',
+                text: 'Test Link D',
+              },
+            ]
+          },
+          {
+            heading: 'Test',
+            links: [
+              {
+                href: '#',
+                text: 'Test Link E',
+              },
+              {
+                href: '#',
+                text: 'Test Link f',
+              },
+              {
+                href: '#',
+                text: 'Test Link G',
+              },
+              {
+                href: '#',
+                text: 'Test Link H',
+              }
+            ]
+          }
+        ],
+      }}
+    >
+      <h1>hello world</h1>
+    </Layout>
+  </Story>
+</Preview>

@@ -6,6 +6,7 @@ import { Logo as SVG } from '../../Icon';
 
 const logoProps = ({ size, color }) => ({
   border: color,
+  spacing: { p: 0.5 },
   children: <SVG size={size - 2} color={color} />,
 });
 
@@ -22,7 +23,4 @@ Logo.defaultProps = {
   size: 8,
   color: 'black',
   border: 'black',
-  spacing: {
-    p: 0.5,
-  },
 };

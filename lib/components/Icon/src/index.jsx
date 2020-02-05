@@ -7,13 +7,14 @@ export const Icon = styled.span.attrs(() => ({}))`
   position: relative;
   
   & > svg {
-    ${({ theme, color }) => color && `fill: ${theme.palette.color(color)};`}
+    ${({ theme, path, color }) => color && `${path}: ${theme.palette.color(color)};`}
     ${({ theme, size }) => size && `width: ${theme.spacing(size)};`}
     ${({ theme, size }) => size && `height: ${theme.spacing(size)};`}
   }
 `;
 
 Icon.propTypes = {
+  path: PropTypes.oneOf(['outline', 'fill']),
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   color: PropTypes.oneOfType([
     PropTypes.string,
@@ -22,10 +23,13 @@ Icon.propTypes = {
   ]),
 };
 
+Icon.defaultProps = {
+  path: 'fill',
+};
+
 export const createIcon = (path, displayName) => {
   const Component = React.memo(
     React.forwardRef((props, ref) => (
-      // eslint-disable-next-line react/jsx-props-no-spreading
       <Icon ref={ref} {...props}>
         {path}
       </Icon>

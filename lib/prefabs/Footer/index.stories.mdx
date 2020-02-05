@@ -1,0 +1,68 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Footer } from './';
+import { Typography } from '../../components/Typography';
+
+<Meta title="Prefabs/Footer" component={Footer} />
+
+# Footer
+
+The `<Footer/>` component.
+
+## Import
+
+```js
+import { Footer } from '@firstclasspostcodes/sw14';
+// or
+import { Footer } from '@firstclasspostcodes/sw14/lib/prefabs/Footer';
+```
+
+<Preview>
+  <Story name="Footer">
+    <Footer
+      columns={[
+        {
+          heading: 'Product',
+          links: [
+            {
+              href: '#',
+              text: 'Test Link A',
+            },
+            {
+              href: '#',
+              text: 'Test Link B',
+            },
+            {
+              href: '#',
+              text: 'Test Link C',
+            },
+            {
+              href: '#',
+              text: 'Test Link D',
+            },
+          ]
+        },
+        {
+          heading: 'Test',
+          links: [
+            {
+              href: '#',
+              text: 'Test Link E',
+            },
+            {
+              href: '#',
+              text: 'Test Link f',
+            },
+            {
+              href: '#',
+              text: 'Test Link G',
+            },
+            {
+              href: '#',
+              text: 'Test Link H',
+            }
+          ]
+        }
+      ]}
+    />
+  </Story>
+</Preview>

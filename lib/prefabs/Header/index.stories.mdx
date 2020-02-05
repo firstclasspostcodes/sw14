@@ -1,6 +1,5 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 import { Header } from './';
-import { Navigation } from '../../components/Navigation';
 import { Button } from '../../components/Button';
 
 <Meta title="Prefabs/Header" component={Header} />
@@ -20,72 +19,72 @@ import { Header } from '@firstclasspostcodes/sw14/lib/prefabs/Header';
 <Preview>
   <Story name="Header">
     <Header
+      logoLinkHref="#"
+      skipLinkHref="#"
       controls={[
-        <Button target="_blank" href="https://docs.firstclasspostcodes.com" border="transparent">Docs</Button>,
-        <Button target="_blank" href="https://dashboard.firstclasspostcodes.com" background="black" color="white">Dashboard</Button>,
+        <Button key="1" target="_blank" href="https://docs.firstclasspostcodes.com" background="transparent" border="transparent">Docs</Button>,
+        <Button key="2" target="_blank" href="https://dashboard.firstclasspostcodes.com" background={{ xs: 'brand', sm: 'black' }} color="white">Dashboard</Button>,
       ]}
-      navigation={(
-        <Navigation data={{
-          items: [
-            {
-              "title": "Products",
-              "items": [
-                {
-                  "title": "APIs",
-                  "items": [
-                    {
-                      "title": "Postcode Lookup",
-                      "link": "/lookup",
-                    },
-                    {
-                      "title": "Address Autocomplete",
-                      "link": "/address-autocomplete",
-                    },
-                    {
-                      "title": "Geolookup",
-                      "link": "/geolookup",
-                    }
-                  ]
-                },
-                {
-                  "title": "APIs",
-                  "items": [
-                    {
-                      "title": "Postcode Lookup",
-                      "link": "/lookup",
-                    },
-                    {
-                      "title": "Address Autocomplete",
-                      "link": "/address-autocomplete",
-                    }
-                  ]
-                },
-              ]
-            },
-            {
-              "title": "Services",
-              "items": [
-                {
-                  "title": "Something short",
-                  "link": "/service-a",
-                },
-                {
-                  "title": "Very short",
-                  "link": "/service-b",
-                },
-                {
-                  "title": "Something a bit longer",
-                  "link": "/service-c",
-                }
-              ]
-            },
-            {
-              "title": "Pricing",
-              "link": "/pricing"
-            },
-          ]
-        }} />
-      )}
+      navigationData={{
+        items: [
+          {
+            "title": "Products",
+            "items": [
+              {
+                "title": "APIs",
+                "items": [
+                  {
+                    "title": "Postcode Lookup",
+                    "link": "/lookup",
+                  },
+                  {
+                    "title": "Address Autocomplete",
+                    "link": "/address-autocomplete",
+                  },
+                  {
+                    "title": "Geolookup",
+                    "link": "/geolookup",
+                  }
+                ]
+              },
+              {
+                "title": "Formats",
+                "items": [
+                  {
+                    "title": "JSON",
+                    "link": "/lookup",
+                  },
+                  {
+                    "title": "GeoJSON",
+                    "link": "/address-autocomplete",
+                  }
+                ]
+              },
+            ]
+          },
+          {
+            "title": "Services",
+            "items": [
+              {
+                "title": "Something short",
+                "link": "/service-a",
+              },
+              {
+                "title": "Very short",
+                "link": "/service-b",
+              },
+              {
+                "title": "Something a bit longer",
+                "link": "/service-c",
+              }
+            ]
+          },
+          {
+            "title": "Pricing",
+            "link": "/pricing"
+          },
+        ],
+      }}
     />
   </Story>
 </Preview>

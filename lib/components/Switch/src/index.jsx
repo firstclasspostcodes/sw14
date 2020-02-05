@@ -122,7 +122,7 @@ export const Switch = ({
     <Label htmlFor={id}>
       <Pointer disabled={disabled} wrap={false}>
         {slider}
-        <Grid.Unit as={Pane} spacing={{ ml: { xs: 2 } }} size={9 / 10}>
+        <Grid.Unit as={Pane} spacing={{ ml: { xs: 2 } }} background="transparent" size={9 / 10}>
           <Typography.H4 {...typographyProps}>{label}</Typography.H4>
           {description ? (
             <Typography.Caption {...typographyProps} size={0} weight="light" hue="5">

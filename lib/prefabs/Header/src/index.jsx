@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import { Grid } from '../../../components/Grid';
 import { SkipLink } from '../../../components/SkipLink';
 import { Pane } from '../../../components/Pane';
-import { Button } from '../../../components/Button';
 import { ButtonGroup } from '../../../components/ButtonGroup';
-import { Typography } from '../../../components/Typography';
+import { Navigation } from '../../../components/Navigation';
 import { Logo } from '../../../components/Logo';
 
 const Border = styled(Pane)`
@@ -23,43 +22,60 @@ const Border = styled(Pane)`
   }
 `;
 
-export const Header = ({ logoLinkTitle, logoLinkHref, skipLinkHref, navigation, controls }) => {
-  return (
-    <>
+const headerAttrs = ({
+  logoProps,
+  logoLinkTitle,
+  logoLinkHref,
+  skipLinkHref,
+  navigationData,
+  controls,
+}) => {
+  const children = (
+    <Pane.Constrained spacing={{}}>
       <SkipLink href={skipLinkHref} />
-      <Border spacing={{ p: { xs: 0, md: 1 } }}>
+      <Border spacing={{ py: { xs: 0, md: 1 }, px: { xs: 0, md: 2 } }}>
         <Grid valign="stretch">
-          <Grid.Shrink visible={{ xs: false, md: true }} as={Pane} spacing={{ p: 1 }}>
+          <Grid.Shrink visible={{ xs: false, md: true }} as={Pane} spacing={{ py: 0.5, pr: 1 }}>
             <a href={logoLinkHref} title={logoLinkTitle}>
-              <Logo size={5} />
+              <Logo {...logoProps} size={5} />
             </a>
           </Grid.Shrink>
           <Grid.Grow as={Pane} spacing={{ pl: { xs: 0, md: 1.5 } }}>
             <Grid valign="center">
               <Grid.Unit as={Grid} halign="left" size={{ xs: 1, md: 2 / 3 }}>
-                {navigation}
+                <Navigation data={navigationData} />
               </Grid.Unit>
-              <Grid.Unit as={Grid} halign="right" size={{ xs: 1, md: 1 / 3 }}>
+              <Grid.Unit as={Grid} halign="right" size={{ md: 1 / 3 }}>
                 <ButtonGroup halign="right">{controls}</ButtonGroup>
               </Grid.Unit>
             </Grid>
           </Grid.Grow>
         </Grid>
       </Border>
-    </>
+    </Pane.Constrained>
   );
+
+  return { children };
 };
+
+export const Header = styled.header.attrs(headerAttrs)`
+  .sticky & {
+    flex-shrink: 0;
+  }
+`;
 
 Header.displayName = 'Header';
 
 Header.propTypes = {
+  logoProps: PropTypes.shape(Logo.propTypes),
   logoLinkTitle: PropTypes.string,
   logoLinkHref: PropTypes.string.isRequired,
   skipLinkHref: PropTypes.string.isRequired,
-  navigation: PropTypes.node.isRequired,
-  controls: ButtonGroup.propTypes.children.isRequired,
+  navigationData: Navigation.propTypes.data,
+  controls: ButtonGroup.propTypes.children,
 };
 
 Header.defaultProps = {
   logoLinkTitle: 'Firstclasspostcodes',
+  logoProps: {},
 };
