@@ -75,7 +75,7 @@
   "dependencies": {
     "deepmerge": "^4.2.2",
     "param-case": "^3.0.3",
-    "polished": "^3.4.3",
+    "polished": "^3.4.4",
     "prop-types": "^15.7.2",
     "react-intersection-observer": "^8.25.2",
     "styled-components": "^5.0.0",
