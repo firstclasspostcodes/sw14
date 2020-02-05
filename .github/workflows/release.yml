@@ -15,7 +15,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - run: npm run build-storybook
+      # - run: npm run build-storybook
       - name: Semantic Release
         id: semantic
         uses: cycjimmy/semantic-release-action@v2
@@ -24,11 +24,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
-      - name: Storybook Documentation
-        if: github.ref == 'refs/heads/master'
-        uses: crazy-max/ghaction-github-pages@v1
-        with:
-          target_branch: gh-pages
-          build_dir: storybook-static
+      - if: github.ref == 'refs/heads/master'
+        run: npm run deploy-storybook -- --ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
