@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Baseline } from '../../../components/Baseline';
 import { Pane } from '../../../components/Pane';
 import { Header } from '../../Header';
 import { Footer } from '../../Footer';
@@ -15,7 +14,6 @@ Content.displayName = 'Layout.Content';
 
 export const Layout = ({ headerProps, footerProps, children }) => (
   <>
-    <Baseline />
     <Header {...headerProps} skipLinkHref="#main-content-area" />
     <Content id="main-content-area">
       <Pane.Constrained spacing={{ px: 2 }}>{children}</Pane.Constrained>
