@@ -1,7 +1,6 @@
 import React from 'react';
 import { addParameters, addDecorator } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
-import { Baseline, Theme } from '../lib';
+import { Baseline, ThemeProvider } from '../lib';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
  
 addParameters({
@@ -11,7 +10,7 @@ addParameters({
 });
 
 addDecorator(storyFn => (
-  <ThemeProvider theme={Theme}>
+  <ThemeProvider>
     <>
       <Baseline rootId="#root"/>
       {storyFn()}
