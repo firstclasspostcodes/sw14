@@ -1,6 +1,13 @@
+# development folders
+.dependabot
+.github
+.storybook
+coverage
+storybook-*
+
+# development files
 /*.json
 /*.js
 .eslint*
 .gitignore
-lib
 README.md
