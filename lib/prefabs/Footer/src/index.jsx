@@ -46,9 +46,7 @@ const footerAttrs = ({ columns }) => {
 };
 
 export const Footer = styled(Pane).attrs(footerAttrs)`
-  .sticky & {
-    flex-shrink: 0;
-  }
+  flex-shrink: 0;
 `;
 
 Footer.displayName = 'Footer';

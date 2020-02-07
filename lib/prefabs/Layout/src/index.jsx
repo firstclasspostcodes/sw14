@@ -6,7 +6,7 @@ import { Pane } from '../../../components/Pane';
 import { Header } from '../../Header';
 import { Footer } from '../../Footer';
 
-const Content = styled.div`
+const Content = styled.main`
   flex: 1 0 auto;
 `;
 
