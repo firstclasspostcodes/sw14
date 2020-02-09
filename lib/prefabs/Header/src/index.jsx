@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '../../../components/Grid';
 import { SkipLink } from '../../../components/SkipLink';
 import { Pane } from '../../../components/Pane';
+import { Button } from '../../../components/Button';
 import { ButtonGroup } from '../../../components/ButtonGroup';
 import { Navigation } from '../../../components/Navigation';
 import { Logo } from '../../../components/Logo';
@@ -47,7 +48,13 @@ const headerAttrs = ({
                   <Navigation data={navigationData} />
                 </Grid.Unit>
                 <Grid.Unit as={Grid} halign="right" size={{ md: 1 / 3 }}>
-                  <ButtonGroup halign="right">{controls}</ButtonGroup>
+                  <ButtonGroup halign="right">
+                    {controls.map(({ text, ...props }) => (
+                      <Button key={text} target="_blank" {...props}>
+                        {text}
+                      </Button>
+                    ))}
+                  </ButtonGroup>
                 </Grid.Unit>
               </Grid>
             </Grid.Grow>
@@ -72,7 +79,12 @@ Header.propTypes = {
   logoLinkHref: PropTypes.string.isRequired,
   skipLinkHref: PropTypes.string.isRequired,
   navigationData: Navigation.propTypes.data,
-  controls: ButtonGroup.propTypes.children,
+  controls: PropTypes.arrayOf(
+    PropTypes.shape({
+      ...Button.propTypes,
+      text: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 Header.defaultProps = {

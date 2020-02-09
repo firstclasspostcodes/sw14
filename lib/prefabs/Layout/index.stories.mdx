@@ -1,6 +1,5 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 import { Layout } from './';
-import { Button } from '../../components/Button';
 
 <Meta title="Prefabs/Layout" component={Layout} />
 
@@ -23,8 +22,18 @@ import { Layout } from '@firstclasspostcodes/sw14/lib/prefabs/Layout';
         skipLinkHref: '#',
         logoLinkHref: '#',
         controls: [
-          <Button key="1" target="_blank" href="https://docs.firstclasspostcodes.com" background="transparent" border="transparent">Docs</Button>,
-          <Button key="2" target="_blank" href="https://dashboard.firstclasspostcodes.com" background={{ xs: 'brand', sm: 'black' }} color="white">Dashboard</Button>,
+          {
+            "background": "transparent",
+            "border": "transparent",
+            "href": "https://docs.firstclasspostcodes.com",
+            "text": "Docs",
+          },
+          {
+            "background": "black",
+            "color": "white",
+            "href": "https://dashboard.firstclasspostcodes.com",
+            "text": "Dashboard",
+          },
         ],
         navigationData: {
           items: [
