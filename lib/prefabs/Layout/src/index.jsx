@@ -12,11 +12,13 @@ const Content = styled.main`
 
 Content.displayName = 'Layout.Content';
 
-export const Layout = ({ headerProps, footerProps, children }) => (
+export const Layout = ({ headerProps, footerProps, contentProps, children }) => (
   <>
     <Header {...headerProps} skipLinkHref="#main-content-area" />
     <Content id="main-content-area">
-      <Pane.Constrained spacing={{ px: 2 }}>{children}</Pane.Constrained>
+      <Pane.Constrained {...contentProps} spacing={{ ...contentProps.spacing, px: 2 }}>
+        {children}
+      </Pane.Constrained>
     </Content>
     <Footer {...footerProps} />
   </>
@@ -25,5 +27,10 @@ export const Layout = ({ headerProps, footerProps, children }) => (
 Layout.propTypes = {
   headerProps: PropTypes.shape(Header.propTypes).isRequired,
   footerProps: PropTypes.shape(Footer.propTypes).isRequired,
+  contentProps: PropTypes.shape(Pane.propTypes),
   children: PropTypes.node.isRequired,
+};
+
+Layout.defaultProps = {
+  contentProps: {},
 };
