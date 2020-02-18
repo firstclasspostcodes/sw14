@@ -1,5 +1,6 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 import { Layout } from './';
+import { Pane } from '../../components/Pane';
 
 <Meta title="Prefabs/Layout" component={Layout} />
 
@@ -144,6 +145,9 @@ import { Layout } from '@firstclasspostcodes/sw14/lib/prefabs/Layout';
       }}
     >
       <h1>hello world</h1>
+      <Pane color="white" border="black" background="black">
+        <p>this is text content</p>
+      </Pane>
     </Layout>
   </Story>
 </Preview>

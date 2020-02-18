@@ -43,5 +43,5 @@ Hero.propTypes = {
 
 Hero.defaultProps = {
   reverse: false,
+  buttonProps: {},
 };
-

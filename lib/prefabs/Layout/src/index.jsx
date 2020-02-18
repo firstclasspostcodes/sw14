@@ -6,7 +6,7 @@ import { Pane } from '../../../components/Pane';
 import { Header } from '../../Header';
 import { Footer } from '../../Footer';
 
-const Content = styled.main`
+const Content = styled(Pane).attrs({ as: 'main' })`
   flex: 1 0 auto;
 `;
 
@@ -15,10 +15,19 @@ Content.displayName = 'Layout.Content';
 export const Layout = ({ headerProps, footerProps, contentProps, children }) => (
   <>
     <Header {...headerProps} skipLinkHref="#main-content-area" />
-    <Content id="main-content-area">
-      <Pane.Constrained {...contentProps} spacing={{ ...contentProps.spacing, px: 2 }}>
-        {children}
-      </Pane.Constrained>
+    <Content id="main-content-area" {...contentProps} spacing={contentProps.spacing || {}}>
+      {React.Children.map(children, child => {
+        if (child.type === Pane) {
+          return React.cloneElement(child, {
+            as: Pane.Constrained,
+            spacing: {
+              ...child.props.spacing,
+              px: 2,
+            },
+          });
+        }
+        return <Pane.Constrained spacing={{ px: 2 }}>{child}</Pane.Constrained>;
+      })}
     </Content>
     <Footer {...footerProps} />
   </>
