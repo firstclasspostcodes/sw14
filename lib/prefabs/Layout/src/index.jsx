@@ -16,18 +16,7 @@ export const Layout = ({ headerProps, footerProps, contentProps, children }) => 
   <>
     <Header {...headerProps} skipLinkHref="#main-content-area" />
     <Content id="main-content-area" {...contentProps}>
-      {React.Children.map(children, child => {
-        if (child.type === Pane) {
-          return React.cloneElement(child, {
-            as: Pane.Constrained,
-            spacing: {
-              ...child.props.spacing,
-              px: 2,
-            },
-          });
-        }
-        return <Pane.Constrained spacing={{ px: 2 }}>{child}</Pane.Constrained>;
-      })}
+      {children}
     </Content>
     <Footer {...footerProps} />
   </>
