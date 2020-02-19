@@ -7,7 +7,7 @@ import { Pane } from '../../../components/Pane';
 import { Typography } from '../../../components/Typography';
 import { Logo } from '../../../components/Logo';
 
-const footerAttrs = ({ columns }) => {
+const footerAttrs = ({ theme, columns }) => {
   const children = (
     <Pane.Constrained>
       <Pane spacing={{ mb: 4 }}>
@@ -47,7 +47,7 @@ const footerAttrs = ({ columns }) => {
     as: 'footer',
     children,
     spacing: {
-      px: 2,
+      px: theme.constants.GUTTER,
       py: 8,
     },
   };
