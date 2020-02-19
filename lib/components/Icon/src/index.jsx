@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-export const Icon = styled.span.attrs(() => ({}))`
+export const Icon = styled.span`
   display: inline-flex;
   position: relative;
   

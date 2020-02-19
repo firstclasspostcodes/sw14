@@ -35,7 +35,7 @@ const headerAttrs = ({
     <>
       <SkipLink href={skipLinkHref} />
       <Border spacing={{ py: { xs: 0, md: 1 }, px: { xs: 0, md: 2 } }}>
-        <Pane.Constrained spacing={{}}>
+        <Pane.Constrained>
           <Grid valign="stretch">
             <Grid.Shrink visible={{ xs: false, md: true }} as={Pane} spacing={{ py: 0.5, pr: 1 }}>
               <a href={logoLinkHref} title={logoLinkTitle}>

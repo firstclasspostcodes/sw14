@@ -9,7 +9,7 @@ import { Logo } from '../../../components/Logo';
 
 const footerAttrs = ({ columns }) => {
   const children = (
-    <Pane.Constrained spacing={{}}>
+    <Pane.Constrained>
       <Pane spacing={{ mb: 4 }}>
         <Logo color="white" border="white" size={5} />
       </Pane>
@@ -42,7 +42,15 @@ const footerAttrs = ({ columns }) => {
       </Pane>
     </Pane.Constrained>
   );
-  return { as: 'footer', children };
+  return {
+    background: 'black',
+    as: 'footer',
+    children,
+    spacing: {
+      px: 2,
+      py: 8,
+    },
+  };
 };
 
 export const Footer = styled(Pane).attrs(footerAttrs)`
@@ -64,12 +72,4 @@ Footer.propTypes = {
       ),
     })
   ).isRequired,
-};
-
-Footer.defaultProps = {
-  background: 'black',
-  spacing: {
-    px: 2,
-    py: 8,
-  },
 };

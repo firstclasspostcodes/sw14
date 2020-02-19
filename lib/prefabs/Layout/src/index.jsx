@@ -15,7 +15,7 @@ Content.displayName = 'Layout.Content';
 export const Layout = ({ headerProps, footerProps, contentProps, children }) => (
   <>
     <Header {...headerProps} skipLinkHref="#main-content-area" />
-    <Content id="main-content-area" {...contentProps} spacing={contentProps.spacing || {}}>
+    <Content id="main-content-area" {...contentProps}>
       {React.Children.map(children, child => {
         if (child.type === Pane) {
           return React.cloneElement(child, {
