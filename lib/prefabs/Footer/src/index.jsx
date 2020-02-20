@@ -14,7 +14,7 @@ const footerAttrs = ({ theme, columns }) => {
         <Logo color="white" border="white" size={5} />
       </Pane>
       <Grid size={1} valign="top">
-        <Grid as={Grid.Unit} size={{ xs: 1, sm: 1 / 2, md: 1 / 3 }}>
+        <Grid as={Grid.Unit} size={{ xs: 1, sm: 1 / 2 }}>
           {columns.map(({ heading, links }) => (
             <Grid.Unit
               size={{ xs: 1, md: 1 / columns.length }}
@@ -43,6 +43,7 @@ const footerAttrs = ({ theme, columns }) => {
     </Pane.Constrained>
   );
   return {
+    containment: 'layout paint',
     background: 'black',
     as: 'footer',
     children,

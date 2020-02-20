@@ -69,6 +69,7 @@ const headerAttrs = ({
 };
 
 export const Header = styled.header.attrs(headerAttrs)`
+  contain: layout;
   flex-shrink: 0;
 `;
 
