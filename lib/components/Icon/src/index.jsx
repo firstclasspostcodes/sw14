@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 export const Icon = styled.span`
   display: inline-flex;
   position: relative;
-  
+
   & > svg {
-    ${({ theme, path, color }) => color && `${path}: ${theme.palette.color(color)};`}
+    ${({ theme, color }) => color && `--color: ${theme.palette.color(color)};`}
+    ${({ path }) => path}: var(--color, inherit);
     ${({ theme, size }) => size && `width: ${theme.spacing(size)};`}
     ${({ theme, size }) => size && `height: ${theme.spacing(size)};`}
   }
