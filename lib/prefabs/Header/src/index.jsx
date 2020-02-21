@@ -71,11 +71,14 @@ const headerAttrs = ({
 export const Header = styled.header.attrs(headerAttrs)`
   contain: layout;
   flex-shrink: 0;
+  position: ${({ sticky }) => (sticky ? 'sticky' : 'relative')};
+  z-index: ${({ theme }) => theme.stack('header')};
 `;
 
 Header.displayName = 'Header';
 
 Header.propTypes = {
+  sticky: PropTypes.bool,
   logoProps: PropTypes.shape(Logo.propTypes),
   logoLinkTitle: PropTypes.string,
   logoLinkHref: PropTypes.string.isRequired,
@@ -90,6 +93,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
+  sticky: false,
   logoLinkTitle: 'Firstclasspostcodes',
   logoProps: {},
 };

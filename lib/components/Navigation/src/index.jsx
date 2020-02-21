@@ -198,7 +198,6 @@ export const Navigation = styled.div.attrs(navigationAttrs)`
       top: 100%;
       left: ${({ theme }) => theme.spacing(2)};
       width: auto;
-      z-index: 10;
     `}
   }
 
