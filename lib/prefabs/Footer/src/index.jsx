@@ -25,7 +25,7 @@ const footerAttrs = ({ theme, columns }) => {
               <Typography.H4 color="white">{heading}</Typography.H4>
               {links.map(({ text, ...textProps }) => (
                 <Pane key={text} spacing={{ pt: 0.5 }}>
-                  <Typography.Text color="white" {...textProps}>
+                  <Typography.Text as="a" color="white" {...textProps}>
                     {text}
                   </Typography.Text>
                   ,
