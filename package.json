@@ -78,6 +78,7 @@
     "prop-types": "^15.7.2",
     "react-helmet": "^5.2.1",
     "react-intersection-observer": "^8.25.3",
+    "react-syntax-highlighter": "^12.2.1",
     "styled-components": "^5.0.1",
     "styled-components-breakpoint": "^3.0.0-preview.20",
     "styled-components-grid": "^2.2.2",
