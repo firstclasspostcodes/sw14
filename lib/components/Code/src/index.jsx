@@ -76,5 +76,5 @@ Code.displayName = 'Code';
 Code.propTypes = {
   language: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  register: PropTypes.shape,
+  register: PropTypes.object,
 };
