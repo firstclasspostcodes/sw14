@@ -14,7 +14,7 @@ Content.displayName = 'Layout.Content';
 
 export const Layout = ({ headerProps, footerProps, contentProps, children }) => (
   <>
-    <Header {...headerProps} skipLinkHref="#main-content-area" />
+    <Header skipLinkHref="#main-content-area" {...headerProps} />
     <Content id="main-content-area" {...contentProps}>
       {children}
     </Content>
