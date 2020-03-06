@@ -56,6 +56,10 @@ const footerAttrs = ({ theme, columns }) => {
 
 export const Footer = styled(Pane).attrs(footerAttrs)`
   flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 `;
 
 Footer.displayName = 'Footer';

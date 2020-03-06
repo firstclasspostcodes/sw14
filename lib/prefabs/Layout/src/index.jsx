@@ -8,6 +8,9 @@ import { Footer } from '../../Footer';
 
 const Content = styled(Pane).attrs({ as: 'main' })`
   flex: 1 0 auto;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
 `;
 
 Content.displayName = 'Layout.Content';
