@@ -1,4 +1,6 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Grid } from '../Grid';
+import { Button } from '../Button';
 import { TextField } from './';
 
 <Meta title="Components/TextField" component={TextField} />
@@ -17,6 +19,19 @@ import { TextField } from '@firstclasspostcodes/sw14/lib/components/TextField';
 <Preview>
   <Story name="Standard">
     <TextField placeholder="This is placeholder text" fullWidth/>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="With a button">
+    <Grid>
+      <Grid.Shrink>
+        <TextField placeholder="This is placeholder text" fullWidth/>
+      </Grid.Shrink>
+      <Grid.Shrink>
+        <Button color="white" background="black">Submit</Button>
+      </Grid.Shrink>
+    </Grid>
   </Story>
 </Preview>
 

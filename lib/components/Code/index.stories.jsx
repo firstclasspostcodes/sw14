@@ -12,4 +12,4 @@ const js = () => {
   return <Code language="javascript">{code}</Code>;
 };
 
-storiesOf('Code', module).add('Javascript', js);
+storiesOf('Components/Code', module).add('Javascript', js);

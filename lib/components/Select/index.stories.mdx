@@ -1,0 +1,40 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Grid } from '../Grid';
+import { Button } from '../Button';
+import { Select } from './';
+
+<Meta title="Components/Select" component={Select} />
+
+# Select
+
+The `<Select/>` component.
+
+## Import
+
+```js
+import { Select } from '@firstclasspostcodes/sw14';
+// or
+import { Select } from '@firstclasspostcodes/sw14/lib/components/Select';
+```
+
+<Preview>
+  <Story name="Select">
+    <Grid>
+      <Grid.Shrink>
+        <Select placeholder="Select an option">
+          <optgroup label="Swedish Cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+          </optgroup>
+          <optgroup label="German Cars">
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </optgroup>
+        </Select>
+      </Grid.Shrink>
+      <Grid.Shrink>
+        <Button color="white" background="black">Submit</Button>
+      </Grid.Shrink>
+    </Grid>
+  </Story>
+</Preview>
