@@ -25,9 +25,12 @@ const SelectContainer = styled(TextField).attrs(selectContainerAttrs)`
   display: inline-flex;
   position: relative;
   padding-right: ${({ theme }) => theme.spacing(4)};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 
   select {
     position: absolute;
@@ -79,7 +82,7 @@ export const Select = React.forwardRef(({ id, children, onChange, ...props }, in
 
   return (
     <SelectContainer htmlFor={id} {...props}>
-      {value}
+      <span>{value}</span>
       <select id={id} {...props} defaultValue="" onChange={setCurrentSelectValue} ref={selectRef}>
         {children}
       </select>
