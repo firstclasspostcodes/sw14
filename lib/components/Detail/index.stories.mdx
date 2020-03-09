@@ -1,0 +1,43 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Typography } from '../Typography';
+import { Detail } from './';
+
+<Meta title="Components/Detail" component={Detail} />
+
+# Detail
+
+The `<Detail/>` component.
+
+## Import
+
+```js
+import { Detail } from '@firstclasspostcodes/sw14';
+// or
+import { Detail } from '@firstclasspostcodes/sw14/lib/components/Detail';
+```
+
+<Preview>
+  <Story name="Detail">
+    <Detail.Group>
+      <Detail>
+        <Detail.Summary>
+          <Typography.H4>Pricing</Typography.H4>
+          <Typography.Caption>Some other captioned information</Typography.Caption>
+        </Detail.Summary>
+        <Detail.Content>
+          <Typography.Text>
+            This detail component contains a nested detail
+          </Typography.Text>
+        </Detail.Content>
+      </Detail>
+      <Detail>
+        <Detail.Summary>
+          <Typography.H4>Pricing</Typography.H4>
+        </Detail.Summary>
+        <Detail.Content border={['gray', 4]}>
+          This is some of the summary content that will be included inside the detail element.
+        </Detail.Content>
+      </Detail>
+    </Detail.Group>
+  </Story>
+</Preview>
