@@ -48,7 +48,12 @@ const headerAttrs = ({
                 <Grid.Unit as={Grid} halign="left" size={{ xs: 1, md: 2 / 3 }}>
                   <Navigation data={navigationData} />
                 </Grid.Unit>
-                <Grid.Unit as={Grid} halign="right" size={{ md: 1 / 3 }}>
+                <Grid.Unit
+                  as={Grid}
+                  halign="right"
+                  visible={{ xs: false, md: true }}
+                  size={{ md: 1 / 3 }}
+                >
                   <ButtonGroup halign="right">
                     {controls.map(({ text, ...props }) => (
                       <Button key={text} target="_blank" {...props}>
