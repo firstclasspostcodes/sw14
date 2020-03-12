@@ -60,6 +60,7 @@ export const Footer = styled(Pane).attrs(footerAttrs)`
   bottom: 0;
   left: 0;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 Footer.displayName = 'Footer';
