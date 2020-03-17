@@ -1,0 +1,42 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Tracking } from '.';
+
+<Meta title="Components/Tracking" component={Tracking.H1} />
+
+# Tracking
+
+The `<Tracking.X>` component is used for all text-based components and allows you to flexibly customise it's appearance. This component is also used inside lots of other components, such as `<Button/>`.
+
+## Import
+
+```js
+import { Tracking } from '@firstclasspostcodes/sw14';
+// or
+import { Tracking } from '@firstclasspostcodes/sw14/lib/components/Tracking';
+```
+
+## Tracking
+
+<Preview>
+  <Story name="Tracking">
+    <Tracking.Provider>
+      <Tracking.Banner />
+    </Tracking.Provider>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Preferences">
+    <Tracking.Provider>
+      <Tracking.Preferences
+        render={({ settings, usage, campaigns }) => (
+          <>
+            {settings}
+            {usage}
+            {campaigns}
+          </>
+        )}
+      />
+    </Tracking.Provider>
+  </Story>
+</Preview>

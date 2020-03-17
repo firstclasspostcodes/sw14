@@ -104,6 +104,7 @@ export const Switch = ({
       <Input
         type={type}
         defaultChecked={initial}
+        checked={initial}
         onChange={onChange}
         id={id}
         name={name}

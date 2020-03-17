@@ -7,6 +7,7 @@ import { SkipLink } from '../../../components/SkipLink';
 import { Pane } from '../../../components/Pane';
 import { Button } from '../../../components/Button';
 import { ButtonGroup } from '../../../components/ButtonGroup';
+import { Tracking } from '../../../components/Tracking';
 import { Navigation } from '../../../components/Navigation';
 import { Logo } from '../../../components/Logo';
 
@@ -29,12 +30,15 @@ const headerAttrs = ({
   logoLinkHref,
   skipLinkHref,
   navigationData,
+  trackingDomain,
+  onSetTrackingPreferences,
   controls,
   theme,
 }) => {
   const children = (
-    <>
+    <Tracking.Provider domain={trackingDomain}>
       <SkipLink href={skipLinkHref} />
+      <Tracking.Banner onSetPreferences={onSetTrackingPreferences} />
       <Border spacing={{ py: { xs: 0, md: 1 }, px: { xs: 0, md: theme.constants.GUTTER } }}>
         <Pane.Constrained>
           <Grid valign="stretch">
@@ -67,7 +71,7 @@ const headerAttrs = ({
           </Grid>
         </Pane.Constrained>
       </Border>
-    </>
+    </Tracking.Provider>
   );
 
   return { children };
@@ -85,10 +89,12 @@ Header.displayName = 'Header';
 Header.propTypes = {
   sticky: PropTypes.bool,
   logoProps: PropTypes.shape(Logo.propTypes),
+  trackingDomain: PropTypes.string.isRequired,
   logoLinkTitle: PropTypes.string,
   logoLinkHref: PropTypes.string.isRequired,
   skipLinkHref: PropTypes.string.isRequired,
   navigationData: Navigation.propTypes.data,
+  onSetTrackingPreferences: PropTypes.func.isRequired,
   controls: PropTypes.arrayOf(
     PropTypes.shape({
       ...Button.propTypes,
