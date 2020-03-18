@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import { Typography } from '../../Typography';
 import { SquareEmptyAlert } from '../../Icon';
 
-const Label = styled(Typography.H5)`
-  display: inline-flex;
+const FormText = styled(Typography.P)`
+  margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
-const formFieldProps = ({ id, invalid, hint, input, inputProps, description, label }) => {
+const formFieldProps = ({ id, invalid, hint, input, inputProps, description, Label, label }) => {
   const isInvalid = typeof invalid === 'string' && invalid.length > 0;
 
   const inputOverrides = {
@@ -28,11 +28,11 @@ const formFieldProps = ({ id, invalid, hint, input, inputProps, description, lab
       <Typography.P weight="light">{description}</Typography.P>
       {input(inputOverrides)}
       {invalid ? (
-        <Typography.P id={`${id}-error`} color={['red', 7]}>
+        <FormText id={`${id}-error`} color={['red', 7]}>
           <SquareEmptyAlert aria-hidden="false" color={['red', 7]} size={4} /> {invalid}
-        </Typography.P>
+        </FormText>
       ) : null}
-      {hint ? <Typography.P weight="medium">{hint}</Typography.P> : null}
+      {hint ? <FormText weight="medium">{hint}</FormText> : null}
     </>
   );
 
@@ -59,6 +59,7 @@ FormField.propTypes = {
   description: PropTypes.string,
   validationMessage: PropTypes.string,
   hint: PropTypes.string,
+  Label: PropTypes.elementType,
 };
 
 FormField.defaultProps = {
@@ -68,4 +69,5 @@ FormField.defaultProps = {
   description: '',
   hint: '',
   validationMessage: '',
+  Label: Typography.H5,
 };

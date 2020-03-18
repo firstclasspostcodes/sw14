@@ -1,6 +1,7 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 import { FormField } from './';
 import { TextField } from '../TextField';
+import { Typography } from '../Typography';
 import { Grid } from '../Grid';
 
 <Meta title="Components/FormField" component={FormField} />
@@ -41,7 +42,9 @@ import { FormField } from '@firstclasspostcodes/sw14/lib/components/FormField';
         }}
         id="password"
         label="Password"
+        Label={Typography.H2}
         description="Your password contains at least 8 characters."
+        hint="Try using a special character like @"
       />
     </Pane>
   </Story>
