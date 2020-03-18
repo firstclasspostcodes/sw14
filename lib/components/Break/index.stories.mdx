@@ -1,0 +1,28 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Break } from '.';
+
+<Meta title="Components/Break" component={Break} />
+
+# Break
+
+The `<Break/>` component.
+
+## Import
+
+```js
+import { Break } from '@firstclasspostcodes/sw14';
+// or
+import { Break } from '@firstclasspostcodes/sw14/lib/components/Break';
+```
+
+## Standard
+
+<Preview>
+  <Story name="Standard">
+    <>  
+      <p>some text</p>
+      <Break spacing={{ my: 0 }} />
+      <p>some other text</p>
+    </>
+  </Story>
+</Preview>
