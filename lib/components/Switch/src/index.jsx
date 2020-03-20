@@ -70,11 +70,11 @@ const Slider = styled.div`
     background-color: ${({ theme }) => theme.palette.color(['gray', 2])};
   }
 
-  ${Input}[aria-invalid='true'] + & {
+  ${Input} [aria-invalid='true'] + & {
     background-color: ${({ theme }) => theme.palette.color(['red', 2])};
   }
 
-  ${Input}[aria-invalid='true']:checked + & {
+  ${Input} [aria-invalid='true']:checked + & {
     background-color: ${({ theme }) => theme.palette.color(['red', 7])};
   }
 `;

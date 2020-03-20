@@ -16,14 +16,8 @@ const InputContainer = styled(Grid.Unit)`
   flex-basis: 10%;
 `;
 
-// const Input = styled(TextField)`
-//   margin-top: -${({ theme }) => theme.spacing(1)};
-// `;
-
-export const ChipField = ({ chips, onChange, onBeforeAdd, placeholder, ...props }) => {
+export const ChipField = ({ chips, onChange, onBeforeAdd, placeholder }) => {
   const [values, setValues] = useState(chips);
-
-  const [isFocused, setFocus] = useState(false);
 
   const handleUpdate = list => [setValues(list), onChange(list)];
 
@@ -68,17 +62,16 @@ export const ChipField = ({ chips, onChange, onBeforeAdd, placeholder, ...props 
   };
 
   return (
-    <Pane spacing={{p: 0}} border="black">
+    <Pane spacing={{ p: 0 }} border="black">
       <Grid valign="center" halign="left">
         <Chips>
           {values.map((chipProps, i) => (
+            // eslint-disable-next-line react/no-array-index-key
             <Chip key={i} {...chipProps} onClick={val => handleDelete(i, val)} />
           ))}
         </Chips>
         <InputContainer>
           <TextField
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
             onKeyUp={handleKeyUp}
             border="transparent"
             type="text"
@@ -103,5 +96,6 @@ ChipField.propTypes = {
 ChipField.defaultProps = {
   onChange: () => null,
   placeholder: '',
+  inputProps: {},
   onBeforeAdd: val => ({ label: val }),
 };
