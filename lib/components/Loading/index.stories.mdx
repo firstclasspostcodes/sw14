@@ -1,0 +1,27 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Loading } from '.';
+import { Typography } from '../Typography';
+
+<Meta title="Components/Loading" component={Loading} />
+
+# Loading
+
+The `<Loading/>` component.
+
+## Import
+
+```js
+import { Loading } from '@firstclasspostcodes/sw14';
+// or
+import { Loading } from '@firstclasspostcodes/sw14/lib/components/Loading';
+```
+
+## Standard
+
+<Preview>
+  <Story name="Standard">
+    <Loading>
+      <Typography.Highlight highlight={['gray', 1]}>Loading</Typography.Highlight>
+    </Loading>
+  </Story>
+</Preview>
