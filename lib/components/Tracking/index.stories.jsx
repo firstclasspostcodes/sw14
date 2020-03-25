@@ -8,13 +8,15 @@ const tracking = () => {
     <Tracking.Provider>
       <Tracking.Banner />
       <Tracking.Preferences
-        render={({ settings, usage, campaigns }) => (
-          <>
-            {settings}
-            {usage}
-            {campaigns}
-          </>
-        )}
+        render={({ settings, usage, campaigns }) => {
+          return (
+            <>
+              {settings}
+              {usage}
+              {campaigns}
+            </>
+          );
+        }}
       />
     </Tracking.Provider>
   );
