@@ -26,7 +26,10 @@ export const Provider = withCookies(({ domain, cookies, children }) => {
 
   const setCookie = obj => cookies.set(COOKIE_NAME, obj, { domain });
 
-  const updatePolicy = obj => [setPolicy(obj), setCookie(obj)];
+  const updatePolicy = obj => {
+    setCookie(obj);
+    return setPolicy(obj);
+  };
 
   useEffect(() => {
     const retrievedPolicy = cookies.get(COOKIE_NAME);
