@@ -70,7 +70,7 @@
     "pascalcase": "^1.0.0",
     "prettier": "^1.19.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.1"
   },
   "dependencies": {
     "param-case": "^3.0.3",
