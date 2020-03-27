@@ -35,16 +35,11 @@ export const Provider = withCookies(({ domain, cookies, children }) => {
 const BannerPane = styled(Pane)`
   position: relative;
   z-index: ${({ theme }) => theme.stack('banner')};
+  ${({ confirmed }) => confirmed && 'display: none;'}
 `;
 
 export const Banner = ({ title, caption, onSetPreferences }) => {
   const [policy, setPolicy] = useContext(Context);
-
-  const { confirmed } = policy;
-
-  if (confirmed || typeof confirmed !== 'boolean') {
-    return <div />;
-  }
 
   const generatePermissivePolicy = () =>
     Object.keys(policy).reduce((obj, key) => ({ [key]: true, ...obj }), {});
@@ -52,7 +47,7 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
   const onAcceptAll = () => setPolicy(generatePermissivePolicy());
 
   return (
-    <BannerPane spacing={{ p: 2 }} background="black" color="white">
+    <BannerPane confirmed={policy.confirmed} spacing={{ p: 2 }} background="black" color="white">
       <Grid as={Pane.Constrained} valign="bottom">
         <Grid.Unit grow={{ sm: true }} size={{ xs: 1, sm: 1 }}>
           <Typography.H5 alignment={{ xs: 'center', sm: 'left' }}>{title}</Typography.H5>
