@@ -20,10 +20,17 @@ export const DEFAULT_POLICY = {
   usage: false,
 };
 
+const defaultCookieOptions = {
+  path: '/',
+  secure: true,
+  sameSite: 'strict',
+  maxAge: 60 * 60 * 24 * 365,
+};
+
 export const Context = React.createContext(null);
 
 export const Provider = withCookies(({ domain, cookies, children }) => {
-  const setCookie = obj => cookies.set(COOKIE_NAME, obj, { domain });
+  const setCookie = obj => cookies.set(COOKIE_NAME, obj, { domain, ...defaultCookieOptions });
 
   const policy = cookies.get(COOKIE_NAME) || DEFAULT_POLICY;
 
