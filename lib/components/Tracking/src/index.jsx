@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withCookies } from 'react-cookie';
 
@@ -31,6 +32,11 @@ export const Provider = withCookies(({ domain, cookies, children }) => {
   return <Context.Provider value={policyContextValue}>{children}</Context.Provider>;
 });
 
+const BannerPane = styled(Pane)`
+  position: relative;
+  z-index: ${({ theme }) => theme.stack('banner')};
+`;
+
 export const Banner = ({ title, caption, onSetPreferences }) => {
   const [policy, setPolicy] = useContext(Context);
 
@@ -46,7 +52,7 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
   const onAcceptAll = () => setPolicy(generatePermissivePolicy());
 
   return (
-    <Pane spacing={{ p: 2 }} background="black" color="white">
+    <BannerPane spacing={{ p: 2 }} background="black" color="white">
       <Grid as={Pane.Constrained} valign="bottom">
         <Grid.Unit grow={{ sm: true }} size={{ xs: 1, sm: 1 }}>
           <Typography.H5 alignment={{ xs: 'center', sm: 'left' }}>{title}</Typography.H5>
@@ -75,7 +81,7 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
           </Button>
         </Grid.Unit>
       </Grid>
-    </Pane>
+    </BannerPane>
   );
 };
 

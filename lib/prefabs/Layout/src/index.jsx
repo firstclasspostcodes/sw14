@@ -20,16 +20,15 @@ Content.displayName = 'Layout.Content';
 export const Layout = ({
   trackingDomain,
   setTrackingPreferences,
-  skipLinkHref,
   headerProps,
   footerProps,
   contentProps,
   children,
 }) => (
   <Tracking.Provider domain={trackingDomain}>
-    <SkipLink href={skipLinkHref} />
+    <SkipLink href="#main-content-area" />
     <Tracking.Banner onSetPreferences={setTrackingPreferences} />
-    <Header skipLinkHref="#main-content-area" {...headerProps} />
+    <Header {...headerProps} />
     <Content id="main-content-area" {...contentProps}>
       {children}
     </Content>
@@ -39,7 +38,6 @@ export const Layout = ({
 
 Layout.propTypes = {
   trackingDomain: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  skipLinkHref: PropTypes.string.isRequired,
   headerProps: PropTypes.shape(Header.propTypes).isRequired,
   footerProps: PropTypes.shape(Footer.propTypes).isRequired,
   contentProps: PropTypes.shape(Pane.propTypes),
