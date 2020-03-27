@@ -37,7 +37,7 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
   const { confirmed } = policy;
 
   if (confirmed || typeof confirmed !== 'boolean') {
-    return null;
+    return <div />;
   }
 
   const generatePermissivePolicy = () =>
@@ -46,7 +46,7 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
   const onAcceptAll = () => setPolicy(generatePermissivePolicy());
 
   return (
-    <Pane id="cookie-banner" spacing={{ p: 2 }} background="black" color="white">
+    <Pane spacing={{ p: 2 }} background="black" color="white">
       <Grid as={Pane.Constrained} valign="bottom">
         <Grid.Unit grow={{ sm: true }} size={{ xs: 1, sm: 1 }}>
           <Typography.H5 alignment={{ xs: 'center', sm: 'left' }}>{title}</Typography.H5>
