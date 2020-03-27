@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withCookies } from 'react-cookie';
@@ -31,9 +31,17 @@ export const Context = React.createContext(null);
 export const Provider = withCookies(({ domain, cookies, children }) => {
   const setCookie = obj => cookies.set(COOKIE_NAME, obj, { domain, ...defaultCookieOptions });
 
-  const policy = cookies.get(COOKIE_NAME) || DEFAULT_POLICY;
+  const getPolicy = () => cookies.get(COOKIE_NAME) || DEFAULT_POLICY;
 
-  const policyContextValue = [policy, setCookie];
+  const [policy, setPolicy] = useState(getPolicy());
+
+  const updatePolicy = obj => [setCookie(obj), setPolicy(obj)];
+
+  useEffect(() => {
+    setPolicy(getPolicy());
+  }, []);
+
+  const policyContextValue = [policy, updatePolicy];
 
   return <Context.Provider value={policyContextValue}>{children}</Context.Provider>;
 });
