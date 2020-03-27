@@ -22,9 +22,8 @@ export const DEFAULT_POLICY = {
 
 const defaultCookieOptions = {
   path: '/',
-  // secure: true,
-  // sameSite: 'strict',
-  // maxAge: 60 * 60 * 24 * 365,
+  sameSite: 'strict',
+  maxAge: 60 * 60 * 24 * 365,
 };
 
 export const Context = React.createContext(null);
