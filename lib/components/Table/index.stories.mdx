@@ -1,0 +1,62 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Table } from './';
+
+import { Typography } from '../Typography';
+
+<Meta title="Components/Table" component={Table} />
+
+# Table
+
+The `<Table/>` component does pretty much what it says.
+
+## Import
+
+```js
+import { Table } from '@firstclasspostcodes/sw14';
+// or
+import { Table } from '@firstclasspostcodes/sw14/lib/components/Table';
+```
+
+<Preview>
+  <Story name="Table">
+    <Table spacing={{ m: 2 }}>
+      <Table.Caption>Dates & Amounts</Table.Caption>
+      <thead>
+        <tr>
+          <th scope="col">
+            <Typography.Text>Date</Typography.Text>
+          </th>
+          <th scope="col">
+            <Typography.Text>Amount</Typography.Text>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <Typography.Text>First 6 weeks</Typography.Text>
+          </th>
+          <td>
+            <Typography.Text>£109.80 per week</Typography.Text>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <Typography.Text>Next 33 weeks</Typography.Text>
+          </th>
+          <td>
+            <Typography.Text>£109.80 per week</Typography.Text>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <Typography.Text>Total estimated pay</Typography.Text>
+          </th>
+          <td>
+            <Typography.Text>£4,282.20</Typography.Text>
+          </td>
+        </tr>
+      </tbody>
+    </Table>
+  </Story>
+</Preview>
