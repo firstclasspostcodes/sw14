@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { px } from 'styled-components-spacing';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
+
+import colorMixin from '../../../mixins/color';
+import fontMixin from '../../../mixins/font';
+import backgroundMixin from '../../../mixins/background';
 
 SyntaxHighlighter.registerLanguage('javascript', js);
 
@@ -77,4 +82,28 @@ Code.propTypes = {
   language: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   register: PropTypes.object,
+};
+
+Code.Sample = styled.samp`
+  ${colorMixin};
+  ${backgroundMixin};
+  ${fontMixin};
+  font-weight: ${({ theme }) => theme.font.weights.medium};
+  display: inline-flex;
+  text-decoration: none;
+  ${px({ xs: 0.5 })}
+`;
+
+Code.Sample.displayName = 'Code.Sample';
+
+Code.Sample.propTypes = {
+  ...colorMixin.propTypes,
+  ...fontMixin.propTypes,
+  ...backgroundMixin.propTypes,
+};
+
+Code.Sample.defaultProps = {
+  weight: 'medium',
+  background: ['gray', 2],
+  color: 'black',
 };
