@@ -28,20 +28,26 @@ const defaultCookieOptions = {
 
 export const Context = React.createContext(null);
 
+export const useTracking = () => useContext(Context);
+
 export const Provider = withCookies(({ domain, cookies, children }) => {
-  const setCookie = obj => cookies.set(COOKIE_NAME, obj, { domain, ...defaultCookieOptions });
+  const getCookie = name => cookies.get(name);
 
-  const getPolicy = () => cookies.get(COOKIE_NAME) || DEFAULT_POLICY;
+  const setCookie = (name, obj) => cookies.set(name, obj, { domain, ...defaultCookieOptions });
 
-  const [policy, setPolicy] = useState(getPolicy());
+  const setPolicyCookie = obj => setCookie(COOKIE_NAME, obj);
 
-  const updatePolicy = obj => [setCookie(obj), setPolicy(obj)];
+  const getPolicyCookie = () => getCookie(COOKIE_NAME) || DEFAULT_POLICY;
+
+  const [policy, setPolicy] = useState(getPolicyCookie());
+
+  const updatePolicy = obj => [setPolicyCookie(obj), setPolicy(obj)];
 
   useEffect(() => {
-    setPolicy(getPolicy());
+    setPolicy(getPolicyCookie());
   }, []);
 
-  const policyContextValue = [policy, updatePolicy];
+  const policyContextValue = [policy, updatePolicy, { getCookie, setCookie }];
 
   return <Context.Provider value={policyContextValue}>{children}</Context.Provider>;
 });
