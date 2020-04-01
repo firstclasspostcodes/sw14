@@ -21,81 +21,130 @@ import { Layout } from '@firstclasspostcodes/sw14/lib/prefabs/Layout';
     <Layout
       skipLinkHref="#"
       headerProps={{
-        logoLinkHref: '#',
-        controls: [
-          {
-            "background": "transparent",
-            "border": "transparent",
-            "href": "https://docs.firstclasspostcodes.com",
-            "text": "Docs",
-          },
+        "controls": [
           {
             "background": "black",
             "color": "white",
             "href": "https://dashboard.firstclasspostcodes.com",
-            "text": "Dashboard",
-          },
+            "text": "Dashboard"
+          }
         ],
-        navigationData: {
-          items: [
+        "logoLinkHref": "/",
+        "logoLinkTitle": "Firstclasspostcodes",
+        "navigationData": {
+          "items": [
             {
-              "title": "Products",
-              "items": [
-                {
-                  "title": "APIs",
-                  "items": [
-                    {
-                      "title": "Postcode Lookup",
-                      "link": "/lookup",
-                    },
-                    {
-                      "title": "Address Autocomplete",
-                      "link": "/address-autocomplete",
-                    },
-                    {
-                      "title": "Geolookup",
-                      "link": "/geolookup",
-                    }
-                  ]
-                },
-                {
-                  "title": "APIs",
-                  "items": [
-                    {
-                      "title": "Postcode Lookup",
-                      "link": "/lookup",
-                    },
-                    {
-                      "title": "Address Autocomplete",
-                      "link": "/address-autocomplete",
-                    }
-                  ]
-                },
-              ]
+              "link": "/",
+              "title": "Homepage",
+              "visible": {
+                "md": false,
+                "xs": true
+              }
             },
             {
-              "title": "Services",
+              "link": "/getting-started",
+              "title": "Getting Started"
+            },
+            {
               "items": [
                 {
-                  "title": "Something short",
-                  "link": "/service-a",
+                  "items": [
+                    {
+                      "link": "/api/operations/postcode-lookup",
+                      "title": "Postcode Lookup"
+                    },
+                    {
+                      "link": "/api/operations/geolocation-lookup",
+                      "title": "Geolocation Lookup"
+                    },
+                    {
+                      "link": "/api/operations/address-autocomplete",
+                      "title": "Address Autocomplete"
+                    }
+                  ],
+                  "title": "Operations"
                 },
                 {
-                  "title": "Very short",
-                  "link": "/service-b",
-                },
-                {
-                  "title": "Something a bit longer",
-                  "link": "/service-c",
+                  "items": [
+                    {
+                      "link": "/api/information/authentication",
+                      "title": "Authentication"
+                    },
+                    {
+                      "link": "/api/information/errors",
+                      "title": "Errors"
+                    },
+                    {
+                      "link": "/api/information/request-ids",
+                      "title": "Request IDs"
+                    },
+                    {
+                      "link": "/api/information/usage",
+                      "title": "Usage"
+                    }
+                  ],
+                  "title": "Information"
                 }
-              ]
+              ],
+              "title": "API Reference"
             },
             {
-              "title": "Pricing",
-              "link": "/pricing"
+              "items": [
+                {
+                  "items": [
+                    {
+                      "link": "/libaries/javascript",
+                      "title": "Javascript"
+                    },
+                    {
+                      "link": "/libaries/python",
+                      "title": "Python"
+                    },
+                    {
+                      "link": "/libaries/ruby",
+                      "title": "Ruby"
+                    },
+                    {
+                      "link": "/libaries/php",
+                      "title": "PHP"
+                    }
+                  ],
+                  "title": "Libraries"
+                },
+                {
+                  "items": [
+                    {
+                      "link": "https://dashboard.firstclasspostcodes.com",
+                      "title": "Dashboard"
+                    },
+                    {
+                      "link": "https://hub.docker.com/r/firstclasspostcodes/mock",
+                      "rel": "noreferrer noopener",
+                      "target": "_blank",
+                      "title": "Mock API"
+                    },
+                    {
+                      "link": "https://editor.swagger.io/?url=https://api.firstclasspostcodes.com/data/.spec",
+                      "rel": "noreferrer noopener",
+                      "target": "_blank",
+                      "title": "API Reference"
+                    }
+                  ],
+                  "title": "Tools"
+                }
+              ],
+              "title": "Libraries & Tools"
             },
+            {
+              "link": "https://dashboard.firstclasspostcodes.com",
+              "title": "Dashboard",
+              "visible": {
+                "md": false,
+                "xs": true
+              }
+            }
           ]
-        },
+        }
       }}
       footerProps={{
         columns: [

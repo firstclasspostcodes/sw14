@@ -37,15 +37,10 @@ const headerAttrs = ({
           </Grid.Shrink>
           <Grid.Grow as={Pane} spacing={{ pl: { xs: 0, md: 1.5 } }}>
             <Grid valign="center">
-              <Grid.Unit as={Grid} halign="left" size={{ xs: 1, md: 2 / 3 }}>
+              <Grid.Unit grow as={Grid} halign="left">
                 <Navigation data={navigationData} />
               </Grid.Unit>
-              <Grid.Unit
-                as={Grid}
-                halign="right"
-                visible={{ xs: false, md: true }}
-                size={{ md: 1 / 3 }}
-              >
+              <Grid.Unit shrink as={Grid} halign="right" visible={{ xs: false, md: true }}>
                 <ButtonGroup halign="right">
                   {controls.map(({ text, ...props }) => (
                     <Button key={text} target="_blank" {...props}>
