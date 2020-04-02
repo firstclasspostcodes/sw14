@@ -39,7 +39,7 @@ export const Provider = withCookies(({ domain, cookies, children }) => {
 
   const getPolicyCookie = () => getCookie(COOKIE_NAME) || DEFAULT_POLICY;
 
-  const [policy, setPolicy] = useState(getPolicyCookie());
+  const [policy, setPolicy] = useState(() => getPolicyCookie());
 
   const updatePolicy = obj => [setPolicyCookie(obj), setPolicy(obj)];
 
