@@ -56,3 +56,10 @@ Provider.displayName = 'Tracking.Provider';
 Provider.propTypes = {
   children: PropTypes.any.isRequired,
 };
+
+export const connectSettings = WrappedComponent =>
+  React.forwardRef((props, ref) => (
+    <Provider>
+      <WrappedComponent {...props} ref={ref} />
+    </Provider>
+  ));

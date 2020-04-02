@@ -6,9 +6,9 @@ import { Select } from '../Select';
 import { Tracking } from '../Tracking';
 import { Settings } from '.';
 
-const { useSetting } = Settings;
+const { connectSettings, useSetting } = Settings;
 
-const SettingsStory = () => {
+const SettingsStory = connectSettings(() => {
   const preferenceName = 'fruit';
 
   const [fruit = 'apple', setFruit] = useSetting(preferenceName);
@@ -26,15 +26,13 @@ const SettingsStory = () => {
       </Select>
     </>
   );
-};
+});
 
 storiesOf('Components/Settings', module).add('Using Settings', () => {
   return (
     <Tracking.Provider>
-      <Settings.Provider>
-        <Tracking.Banner />
-        <SettingsStory />
-      </Settings.Provider>
+      <Tracking.Banner />
+      <SettingsStory />
     </Tracking.Provider>
   );
 });
