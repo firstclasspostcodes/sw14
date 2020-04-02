@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useMemo, useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withCookies } from 'react-cookie';
@@ -61,13 +61,15 @@ const BannerPane = styled(Pane)`
 export const Banner = ({ title, caption, onSetPreferences }) => {
   const [policy, setPolicy] = useContext(Context);
 
+  const { confirmed } = policy;
+
   const generatePermissivePolicy = () =>
     Object.keys(policy).reduce((obj, key) => ({ [key]: true, ...obj }), {});
 
   const onAcceptAll = () => setPolicy(generatePermissivePolicy());
 
-  return (
-    <BannerPane confirmed={policy.confirmed} spacing={{ p: 2 }} background="black" color="white">
+  const renderComponent = () => (
+    <BannerPane confirmed={confirmed} spacing={{ p: 2 }} background="black" color="white">
       <Grid as={Pane.Constrained} valign="bottom">
         <Grid.Unit grow={{ sm: true }} size={{ xs: 1, sm: 1 }}>
           <Typography.H5 alignment={{ xs: 'center', sm: 'left' }}>{title}</Typography.H5>
@@ -98,6 +100,8 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
       </Grid>
     </BannerPane>
   );
+
+  return useMemo(renderComponent, [confirmed]);
 };
 
 Banner.propTypes = {
