@@ -41,7 +41,7 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-angular": "^8.3.4",
     "@storybook/addon-actions": "^5.3.18",
-    "@storybook/addon-docs": "^5.3.17",
+    "@storybook/addon-docs": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addon-viewport": "^5.3.18",
     "@storybook/addons": "^5.3.18",
