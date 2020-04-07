@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { withCookies } from 'react-cookie';
@@ -55,7 +55,6 @@ export const Provider = withCookies(({ domain, cookies, children }) => {
 const BannerPane = styled(Pane)`
   position: relative;
   z-index: ${({ theme }) => theme.stack('banner')};
-  ${({ confirmed }) => confirmed && 'display: none;'}
 `;
 
 export const Banner = ({ title, caption, onSetPreferences }) => {
@@ -63,13 +62,17 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
 
   const { confirmed } = policy;
 
+  if (confirmed) {
+    return true;
+  }
+
   const generatePermissivePolicy = () =>
     Object.keys(policy).reduce((obj, key) => ({ [key]: true, ...obj }), {});
 
   const onAcceptAll = () => setPolicy(generatePermissivePolicy());
 
-  const renderComponent = () => (
-    <BannerPane confirmed={confirmed} spacing={{ p: 2 }} background="black" color="white">
+  return (
+    <BannerPane spacing={{ p: 2 }} background="black" color="white">
       <Grid as={Pane.Constrained} valign="bottom">
         <Grid.Unit grow={{ sm: true }} size={{ xs: 1, sm: 1 }}>
           <Typography.H5 alignment={{ xs: 'center', sm: 'left' }}>{title}</Typography.H5>
@@ -100,8 +103,6 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
       </Grid>
     </BannerPane>
   );
-
-  return useMemo(renderComponent, [confirmed]);
 };
 
 Banner.propTypes = {
