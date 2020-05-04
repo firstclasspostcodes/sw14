@@ -14,10 +14,15 @@ export const COOKIE_NAME = 'tracking_policy';
 export const POLICY_KEYS = ['settings', 'campaigns', 'usage'];
 
 export const DEFAULT_POLICY = {
-  confirmed: false,
+  confirmed: true,
   settings: false,
   campaigns: false,
   usage: false,
+};
+
+export const MOUNTED_DEFAULT_POLICY = {
+  ...DEFAULT_POLICY,
+  confirmed: false,
 };
 
 const defaultCookieOptions = {
@@ -31,20 +36,18 @@ export const Context = React.createContext(null);
 export const useTracking = () => useContext(Context);
 
 export const Provider = withCookies(({ domain, cookies, children }) => {
+  const [policy, setPolicy] = useState(DEFAULT_POLICY);
+
+  const cookieOptions = { domain, ...defaultCookieOptions };
+
   const getCookie = name => cookies.get(name);
 
-  const setCookie = (name, obj) => cookies.set(name, obj, { domain, ...defaultCookieOptions });
+  const setCookie = (name, obj) => cookies.set(name, obj, cookieOptions);
 
-  const setPolicyCookie = obj => setCookie(COOKIE_NAME, obj);
-
-  const getPolicyCookie = () => getCookie(COOKIE_NAME) || DEFAULT_POLICY;
-
-  const [policy, setPolicy] = useState(() => getPolicyCookie());
-
-  const updatePolicy = obj => [setPolicyCookie(obj), setPolicy(obj)];
+  const updatePolicy = obj => [setCookie(COOKIE_NAME, obj), setPolicy(obj)];
 
   useEffect(() => {
-    setPolicy(getPolicyCookie());
+    setPolicy(getCookie(COOKIE_NAME) || MOUNTED_DEFAULT_POLICY);
   }, []);
 
   const policyContextValue = [policy, updatePolicy, { getCookie, setCookie }];
@@ -63,7 +66,7 @@ export const Banner = ({ title, caption, onSetPreferences }) => {
   const { confirmed } = policy;
 
   if (confirmed) {
-    return true;
+    return null;
   }
 
   const generatePermissivePolicy = () =>
