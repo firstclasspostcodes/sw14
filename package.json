@@ -80,7 +80,7 @@
     "react-helmet": "^6.0.0",
     "react-intersection-observer": "^8.26.2",
     "react-syntax-highlighter": "^12.2.1",
-    "styled-components": "^5.1.0",
+    "styled-components": "^5.1.1",
     "styled-components-breakpoint": "^3.0.0-preview.20",
     "styled-components-grid": "^2.2.2",
     "styled-components-spacing": "^3.1.1",
