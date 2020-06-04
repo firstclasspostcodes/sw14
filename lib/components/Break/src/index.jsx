@@ -3,7 +3,16 @@ import styled from 'styled-components';
 import borderMixin from '../../../mixins/color';
 import spacingMixin from '../../../mixins/spacing';
 
-export const Break = styled.hr`
+const nonForwardedProps = [
+  ...Object.keys(borderMixin.propTypes),
+  ...Object.keys(spacingMixin.propTypes),
+];
+
+const shouldForwardProp = (prop, defaultValidator) => {
+  return !nonForwardedProps.includes(prop) && defaultValidator(prop);
+};
+
+export const Break = styled.hr.withConfig({ shouldForwardProp })`
   ${spacingMixin};
   ${borderMixin};
   width: 100%;

@@ -9,6 +9,15 @@ import { Pane } from '../../Pane';
 import { Icon, Times } from '../../Icon';
 import { Typography } from '../../Typography';
 
+const nonForwardedProps = [
+  ...Object.keys(colorMixin.propTypes),
+  ...Object.keys(fontMixin.propTypes),
+];
+
+const shouldForwardProp = (prop, defaultValidator) => {
+  return !nonForwardedProps.includes(prop) && defaultValidator(prop);
+};
+
 const chipAttrs = ({ color, label, onClick, spacing }) => {
   const handleClick = val => e => {
     e.preventDefault();
@@ -34,7 +43,9 @@ const chipAttrs = ({ color, label, onClick, spacing }) => {
   };
 };
 
-export const Chip = styled(Pane).attrs(chipAttrs)`
+export const Chip = styled(Pane)
+  .attrs(chipAttrs)
+  .withConfig({ shouldForwardProp })`
   ${fontMixin};
 
   display: inline-flex;

@@ -8,6 +8,16 @@ import colorMixin from '../../../mixins/color';
 import fontMixin from '../../../mixins/font';
 import backgroundMixin from '../../../mixins/background';
 
+const nonForwardedProps = [
+  ...Object.keys(colorMixin.propTypes),
+  ...Object.keys(fontMixin.propTypes),
+  ...Object.keys(backgroundMixin.propTypes),
+];
+
+const shouldForwardProp = (prop, defaultValidator) => {
+  return !nonForwardedProps.includes(prop) && defaultValidator(prop);
+};
+
 SyntaxHighlighter.registerLanguage('javascript', js);
 
 const codeAttrs = ({ theme, register }) => {
@@ -24,7 +34,9 @@ const codeAttrs = ({ theme, register }) => {
   };
 };
 
-export const Code = styled(SyntaxHighlighter).attrs(codeAttrs)`
+export const Code = styled(SyntaxHighlighter)
+  .attrs(codeAttrs)
+  .withConfig({ shouldForwardProp })`
   .hljs-comment {
     color: ${({ theme }) => theme.palette.color(['gray', 6])};
   }
