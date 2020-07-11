@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import { Typography } from '../Typography';
 import { Select } from '../Select';
-import { Tracking } from '../Tracking';
 import { Settings } from '.';
 
 const { connectSettings, useSetting } = Settings;
@@ -29,10 +28,5 @@ const SettingsStory = connectSettings(() => {
 });
 
 storiesOf('Components/Settings', module).add('Using Settings', () => {
-  return (
-    <Tracking.Provider>
-      <Tracking.Banner />
-      <SettingsStory />
-    </Tracking.Provider>
-  );
+  return <SettingsStory />;
 });

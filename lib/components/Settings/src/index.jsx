@@ -1,13 +1,16 @@
-import React, { useContext, useState, useDebugValue } from 'react';
+import React, { useContext, useState } from 'react';
+import { withCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
-
-import { Tracking } from '../../Tracking';
 
 const SETTINGS_COOKIE = 'settings';
 
 const Context = React.createContext(null);
 
-const { useTracking } = Tracking;
+const defaultCookieOptions = {
+  path: '/',
+  sameSite: 'strict',
+  maxAge: 60 * 60 * 24 * 365,
+};
 
 export const useSetting = name => {
   const [enabled, getSettings, saveSetting] = useContext(Context);
@@ -32,26 +35,24 @@ export const useSetting = name => {
   return [value, updateSetting];
 };
 
-export const Provider = ({ children }) => {
-  const [{ settings }, , { getCookie, setCookie }] = useTracking();
+export const Provider = withCookies(({ domain, cookies, children }) => {
+  const cookieOptions = { domain, ...defaultCookieOptions };
 
-  const getSettings = () => getCookie(SETTINGS_COOKIE) || {};
+  const getSettings = () => cookies.get(SETTINGS_COOKIE) || {};
 
   const saveSetting = (name, value) => {
     const current = getSettings();
     const updated = { ...current, [name]: value };
-    setCookie(SETTINGS_COOKIE, updated);
+    cookies.set(SETTINGS_COOKIE, updated, cookieOptions);
     return true;
   };
 
-  useDebugValue(`Storing settings is ${settings ? 'enabled' : 'disabled'}.`);
-
-  const value = [settings, getSettings, saveSetting];
+  const value = [getSettings(), getSettings, saveSetting];
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
-};
+});
 
-Provider.displayName = 'Tracking.Provider';
+Provider.displayName = 'Settings.Provider';
 
 Provider.propTypes = {
   children: PropTypes.any.isRequired,
