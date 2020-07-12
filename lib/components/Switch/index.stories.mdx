@@ -17,16 +17,16 @@ import { Switch } from '@firstclasspostcodes/sw14/lib/components/Switch';
 
 <Preview>
   <Story name="Default">
-    <Switch id="default" name="default" label="Send email" description="Triggers an email when it happens."/>
+    <Switch id="default" name="default" onChange={(e) => console.log(e.target.checked)} label="Send email" description="Triggers an email when it happens."/>
   </Story>
 </Preview>
 
 <Preview>
   <Story name="Radio Group">
     <>
-      <Switch type="radio" id="eggs" color="brand" name="colored" label="I like eggs" />
-      <Switch type="radio" id="pizza" invalid checked name="colored" label="I like pizza" />
-      <Switch type="radio" id="apples" name="colored" label="I like apples" description="Especially red juicy apples" />
+      <Switch onChange={(e) => console.log(e.target.value)} type="radio" id="eggs" value="eggs" color="brand" name="colored" label="I like eggs" />
+      <Switch onChange={(e) => console.log(e.target.value)} type="radio" id="pizza" value="pizza" invalid checked name="colored" label="I like pizza" />
+      <Switch onChange={(e) => console.log(e.target.value)} type="radio" id="apples" value="apples" name="colored" label="I like apples" description="Especially red juicy apples" />
     </>
   </Story>
 </Preview>

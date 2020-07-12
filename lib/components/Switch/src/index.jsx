@@ -88,6 +88,7 @@ export const Switch = ({
   invalid,
   onChange,
   label,
+  value,
   description,
   checked: initial,
 }) => {
@@ -104,10 +105,10 @@ export const Switch = ({
       <Input
         type={type}
         defaultChecked={initial}
-        checked={initial}
         onChange={onChange}
         id={id}
         name={name}
+        value={value}
         aria-invalid={invalid}
         disabled={disabled}
       />
@@ -149,6 +150,7 @@ Switch.propTypes = {
   ]),
   type: PropTypes.oneOf(['checkbox', 'radio']),
   label: PropTypes.string,
+  value: PropTypes.string,
   description: PropTypes.string,
   onChange: PropTypes.func,
 };
@@ -161,5 +163,6 @@ Switch.defaultProps = {
   description: '',
   checked: false,
   type: 'checkbox',
+  value: '',
   onChange: () => null,
 };
