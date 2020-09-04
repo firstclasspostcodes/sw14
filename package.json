@@ -68,7 +68,7 @@
     "jest": "^26.4.2",
     "jest-circus": "^26.4.2",
     "pascalcase": "^1.0.0",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
