@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "param-case": "^3.0.3",
-    "polished": "^3.6.6",
+    "polished": "^3.6.7",
     "prop-types": "^15.7.2",
     "react-cookie": "^4.0.3",
     "react-helmet": "^6.1.0",
