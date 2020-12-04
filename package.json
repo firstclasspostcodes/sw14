@@ -73,7 +73,7 @@
     "react-dom": "^16.14.0"
   },
   "dependencies": {
-    "param-case": "^3.0.3",
+    "param-case": "^3.0.4",
     "polished": "^4.0.5",
     "prop-types": "^15.7.2",
     "react-cookie": "^4.0.3",
